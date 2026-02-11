@@ -1,0 +1,30 @@
+[
+    {
+        "id": "mvsl-2026",
+        "title": "Mapa de Valores del Suelo (piloto)",
+        "year": "2026",
+        "type": "Proyecto",
+        "tags": [
+            "GIS",
+            "Valuación masiva",
+            "México"
+        ],
+        "cover": "assets/img/projects/proyecto-1.jpg",
+        "url": "https://github.com/apciudad",
+        "html": "<p>Resumen corto del proyecto. Puedes describir objetivo, método y resultados.</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
+    },
+    {
+        "id": "hedonic-2025",
+        "title": "Modelo hedónico para pronóstico de valor de suelo",
+        "year": "2025",
+        "type": "Investigación",
+        "tags": [
+            "Hedonic",
+            "Econometría",
+            "Urban analytics"
+        ],
+        "cover": "assets/img/projects/proyecto-2.jpg",
+        "url": "https://github.com/apciudad",
+        "html": "<p>Resumen corto. Aquí puedes poner links, imágenes o bullets.</p>"
+    }
+]
