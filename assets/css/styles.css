@@ -30,6 +30,13 @@ a:hover {
     color: var(--accent);
 }
 
+.inline-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -237,7 +244,64 @@ a:hover {
     border-radius: 12px;
 }
 
-@media (max-width: 760px) {
+/* ================= CV ================= */
+
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 36px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.cv-col h3 {
+    margin: 18px 0 10px;
+    font-family: Raleway, sans-serif;
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+.cv-block {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.cv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.cv-tags span {
+    background: var(--chip-bg);
+    border: 1px solid rgba(78, 161, 255, .25);
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.cv-item {
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cv-meta {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.cv-item ul {
+    margin: 6px 0 0 16px;
+    padding: 0;
+}
+
+@media (max-width:760px) {
     .intro {
         flex-direction: column-reverse;
         text-align: center;
@@ -249,5 +313,9 @@ a:hover {
 
     .modal-title {
         font-size: 22px;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
     }
 }

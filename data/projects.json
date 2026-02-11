@@ -11,7 +11,7 @@
         ],
         "cover": "assets/img/projects/proyecto-1.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto del proyecto. Puedes describir objetivo, método y resultados.</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
+        "html": "<p>Resumen corto del proyecto. Describe objetivo, método y resultados. Puedes poner listas:</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
     },
     {
         "id": "hedonic-2025",
@@ -25,6 +25,6 @@
         ],
         "cover": "assets/img/projects/proyecto-2.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto. Aquí puedes poner links, imágenes o bullets.</p>"
+        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     }
 ]
