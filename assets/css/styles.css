@@ -68,10 +68,16 @@ a:hover {
 
 .intro {
     max-width: 1100px;
-    padding: 40px 5%;
+    margin: 0 auto;
+    /* 👈 centra el bloque */
+    padding: 60px 5%;
     display: flex;
-    gap: 28px;
+    gap: 40px;
     align-items: center;
+    justify-content: center;
+    /* 👈 centra horizontalmente */
+    text-align: center;
+    /* 👈 centra texto */
 }
 
 .profile {
