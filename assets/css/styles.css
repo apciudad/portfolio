@@ -91,10 +91,13 @@ a:hover {
 
 .intro-text p {
     margin: 0;
+    max-width: 520px;
+    /* 👈 evita líneas muy largas */
     font-size: 18px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.7;
 }
+
 
 .intro-text strong {
     color: var(--accent);
