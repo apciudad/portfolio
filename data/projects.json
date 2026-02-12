@@ -40,5 +40,19 @@
         "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+    },
+    {
+        "id": "calculadora-plusvalia-2026",
+        "title": "Calculadora de plusvalía",
+        "year": "2025",
+        "type": "Proyecto",
+        "tags": [
+            "Hedonic",
+            "Econometría",
+            "Urban analytics"
+        ],
+        "cover": "assets/img/projects/proyecto-3.jpg",
+        "url": "https://github.com/apciudad",
+        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     }
 ]
