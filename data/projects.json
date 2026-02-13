@@ -22,7 +22,7 @@
             "AI",
             "City Science"
         ],
-        "cover": "assets/img/projects/demo.jpg",
+        "cover": "assets/img/projects/proyecto-2.jpg",
         "url": "https://github.com/apciudad/demo",
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
@@ -38,7 +38,7 @@
             "Econometría",
             "Urban analytics"
         ],
-        "cover": "assets/img/projects/proyecto-2.jpg",
+        "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
@@ -52,7 +52,7 @@
             "Econometría",
             "Urban analytics"
         ],
-        "cover": "assets/img/projects/proyecto-3.jpg",
+        "cover": "assets/img/projects/proyecto-4.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
@@ -66,7 +66,7 @@
             "Econometría",
             "Urban analytics"
         ],
-        "cover": "assets/img/projects/proyecto-3.jpg",
+        "cover": "assets/img/projects/proyecto-5.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
@@ -80,7 +80,7 @@
             "Topografía",
             "Urban analytics"
         ],
-        "cover": "assets/img/projects/proyecto-3.jpg",
+        "cover": "assets/img/projects/proyecto-6.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
@@ -93,7 +93,7 @@
             "AI",
             "City Science"
         ],
-        "cover": "assets/img/projects/demo.jpg",
+        "cover": "assets/img/projects/projecto-7.jpg",
         "url": "https://github.com/apciudad/demo",
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
