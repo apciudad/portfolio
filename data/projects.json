@@ -81,7 +81,7 @@
         "cover": "assets/img/projects/demo.jpg",
         "url": "https://github.com/apciudad/demo",
         "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/zm7FaUAqSJg?list=RDzm7FaUAqSJg' title='Demo'frameborder='0' allowfullscreen> </iframe> </div>"
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
         ]
     }
 ]
