@@ -10,7 +10,7 @@
             "México"
         ],
         "cover": "assets/img/projects/proyecto-1.jpg",
-        "url": "https://github.com/apciudad",
+        "url": "https://valorsueloamericalatina.org/",
         "html": "<p>Resumen corto del proyecto. Describe objetivo, método y resultados. Puedes poner listas:</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
     },
     {
@@ -42,12 +42,12 @@
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
     {
-        "id": "calculadora-plusvalia-2026",
-        "title": "Calculadora de plusvalía",
+        "id": "habitat-latam-2025",
+        "title": "Hábitat LATAM 2025 y Escuela de Alcaldes y Gobernadores",
         "year": "2025",
-        "type": "Proyecto",
+        "type": "Evento",
         "tags": [
-            "Hedonic",
+            "Hábitat",
             "Econometría",
             "Urban analytics"
         ],
@@ -68,5 +68,29 @@
         "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+    },
+    {
+        "id": "demo-ia-2026",
+        "title": "Simulación urbana con IA",
+        "year": "2026",
+        "type": "Demo",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/demo.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": "
+            <p>Demostración del sistema de agentes urbanos.</p>
+
+            <div class='video-wrapper'>
+            <iframe 
+                src='https: //www.youtube.com/embed/_ZwTG3oKHnY'
+                title='Demo'
+                frameborder='0'
+                allowfullscreen>
+            </iframe>
+            </div>
+        "
     }
 ]
