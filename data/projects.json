@@ -27,7 +27,7 @@
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
         ]
-    }
+    },
     {
         "id": "hedonic-2025",
         "title": "Modelo hedónico para pronóstico de valor de suelo",
