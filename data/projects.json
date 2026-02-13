@@ -14,6 +14,21 @@
         "html": "<p>Resumen corto del proyecto. Describe objetivo, método y resultados. Puedes poner listas:</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
     },
     {
+        "id": "presentacion-alejandrolepe",
+        "title": "Presentación Alejandro Lepe",
+        "year": "2025",
+        "type": "Presentación",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/demo.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": [
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+        ]
+    }
+    {
         "id": "hedonic-2025",
         "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
@@ -42,10 +57,10 @@
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
     {
-        "id": "habitat-latam-2025",
-        "title": "Hábitat LATAM 2025 y Escuela de Alcaldes y Gobernadores",
+        "id": "calculadora-habitabilidad",
+        "title": "Calculadora de habitabilidad",
         "year": "2025",
-        "type": "Evento",
+        "type": "Proyecto",
         "tags": [
             "Hábitat",
             "Econometría",
@@ -56,13 +71,13 @@
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
     {
-        "id": "calculadora-plusvalia-2027",
-        "title": "Calculadora de plusvalía",
+        "id": "Levantamiento-dron-costco",
+        "title": "Levantamiento topográfico con dron",
         "year": "2025",
         "type": "Proyecto",
         "tags": [
-            "Hedonic",
-            "Econometría",
+            "Dron",
+            "Topografía",
             "Urban analytics"
         ],
         "cover": "assets/img/projects/proyecto-3.jpg",
@@ -70,10 +85,10 @@
         "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
     },
     {
-        "id": "demo-ia-2026",
-        "title": "Simulación urbana con IA",
-        "year": "2026",
-        "type": "Demo",
+        "id": "expansion-urbana-2025",
+        "title": "Expansión urbana",
+        "year": "2025",
+        "type": "Proyecto",
         "tags": [
             "AI",
             "City Science"
