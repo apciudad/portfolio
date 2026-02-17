@@ -98,5 +98,65 @@
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
         ]
+    },
+    {
+        "id": "expansion-urbana-2025",
+        "title": "Expansión urbana",
+        "year": "2025",
+        "type": "Proyecto",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/projecto-7.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": [
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+        ]
+    },
+    {
+        "id": "expansion-urbana-2025",
+        "title": "Expansión urbana",
+        "year": "2025",
+        "type": "Proyecto",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/projecto-7.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": [
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+        ]
+    },
+    {
+        "id": "expansion-urbana-2025",
+        "title": "Expansión urbana",
+        "year": "2025",
+        "type": "Proyecto",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/projecto-7.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": [
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+        ]
+    },
+    {
+        "id": "expansion-urbana-2025",
+        "title": "Expansión urbana",
+        "year": "2025",
+        "type": "Proyecto",
+        "tags": [
+            "AI",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/projecto-7.jpg",
+        "url": "https://github.com/apciudad/demo",
+        "html": [
+            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+        ]
     }
 ]
