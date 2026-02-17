@@ -9,12 +9,69 @@ window.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById("nextBtn");
     const pageInfo = document.getElementById("pageInfo");
 
+    // Referencias del Modal
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalTags = document.getElementById("modalTags");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalText = document.getElementById("modalText");
+    const modalLink = document.getElementById("modalLink");
+
     let projects = [];
     let filtered = [];
     let page = 1;
     let pageSize = 12;
 
-    // Función de renderizado segura
+    // --- FUNCIÓN DEL MODAL ---
+    function openModal(p) {
+        if (!modal) return;
+
+        // Llenar datos
+        modalImg.src = p.cover || '';
+        modalImg.alt = p.title || '';
+        modalTitle.textContent = p.title || 'Sin título';
+        modalMeta.textContent = `${p.year || ''} • ${p.type || ''}`;
+
+        // Limpiar y llenar tags
+        modalTags.innerHTML = "";
+        (p.tags || []).forEach(t => {
+            const span = document.createElement("span");
+            span.className = "tag";
+            span.textContent = t;
+            modalTags.appendChild(span);
+        });
+
+        // Contenido HTML (Maneja si es String o Array)
+        modalText.innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
+
+        // Configurar botón
+        if (p.url) {
+            modalLink.href = p.url;
+            modalLink.style.display = "inline-block";
+        } else {
+            modalLink.style.display = "none";
+        }
+
+        // Mostrar modal
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // Bloquear scroll
+    }
+
+    function closeModal() {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "auto"; // Liberar scroll
+    }
+
+    // Eventos de cierre
+    modalClose?.addEventListener("click", closeModal);
+    modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+    // --- RENDERIZADO DE TARJETAS ---
     function render() {
         if (!grid) return;
         grid.innerHTML = "";
@@ -31,8 +88,9 @@ window.addEventListener('DOMContentLoaded', () => {
         slice.forEach(p => {
             const card = document.createElement("div");
             card.className = "card";
-            // Si tienes la función openModal definida, úsala aquí
-            card.onclick = () => typeof openModal === 'function' ? openModal(p) : console.log(p);
+
+            // Vincular la función openModal
+            card.onclick = () => openModal(p);
 
             card.innerHTML = `
                 <img src="${p.cover || ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x220?text=Error+Imagen'">
@@ -49,24 +107,22 @@ window.addEventListener('DOMContentLoaded', () => {
         if (nextBtn) nextBtn.disabled = (page >= totalPages);
     }
 
-    // Carga de datos con manejo de errores de red
     async function loadData() {
         try {
             const response = await fetch("data/projects.json");
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
             projects = await response.json();
-            // Ordenar por año descendente
             projects.sort((a, b) => parseInt(b.year) - parseInt(a.year));
             filtered = [...projects];
             render();
         } catch (error) {
             console.error("Fallo al cargar el JSON:", error);
-            if (grid) grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ff4e4e;">Error: No se pudo conectar con projects.json. Revisa que el servidor local esté activo.</p>`;
+            if (grid) grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ff4e4e;">Error al cargar proyectos.</p>`;
         }
     }
 
-    // Listeners protegidos (solo se activan si el elemento existe)
+    // Listeners
     searchInput?.addEventListener("input", (e) => {
         const q = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         filtered = projects.filter(p => {
@@ -86,6 +142,5 @@ window.addEventListener('DOMContentLoaded', () => {
     prevBtn?.addEventListener("click", () => { if (page > 1) { page--; render(); } });
     nextBtn?.addEventListener("click", () => { if ((page * pageSize) < filtered.length) { page++; render(); } });
 
-    // Iniciar carga
     loadData();
 });
