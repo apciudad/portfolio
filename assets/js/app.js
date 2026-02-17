@@ -1,7 +1,7 @@
-// Envoltura de seguridad para esperar al DOM
-window.addEventListener('DOMContentLoaded', () => {
+// Definimos la función fuera para que sea accesible globalmente por el atributo onclick
+let openModal;
 
-    // Referencias con verificación
+window.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById("projectGrid");
     const searchInput = document.getElementById("searchInput");
     const pageSizeSelect = document.getElementById("pageSize");
@@ -9,15 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById("nextBtn");
     const pageInfo = document.getElementById("pageInfo");
 
-    // Referencias del Modal
     const modal = document.getElementById("modal");
     const modalClose = document.getElementById("modalClose");
-    const modalImg = document.getElementById("modalImg");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalTags = document.getElementById("modalTags");
-    const modalMeta = document.getElementById("modalMeta");
-    const modalText = document.getElementById("modalText");
-    const modalLink = document.getElementById("modalLink");
 
     let projects = [];
     let filtered = [];
@@ -25,16 +18,14 @@ window.addEventListener('DOMContentLoaded', () => {
     let pageSize = 12;
 
     // --- FUNCIÓN DEL MODAL ---
-    function openModal(p) {
+    openModal = function (p) {
         if (!modal) return;
 
-        // Llenar datos
-        modalImg.src = p.cover || '';
-        modalImg.alt = p.title || '';
-        modalTitle.textContent = p.title || 'Sin título';
-        modalMeta.textContent = `${p.year || ''} • ${p.type || ''}`;
+        document.getElementById("modalImg").src = p.cover || '';
+        document.getElementById("modalTitle").textContent = p.title || '';
+        document.getElementById("modalMeta").textContent = `${p.year || ''} • ${p.type || ''}`;
 
-        // Limpiar y llenar tags
+        const modalTags = document.getElementById("modalTags");
         modalTags.innerHTML = "";
         (p.tags || []).forEach(t => {
             const span = document.createElement("span");
@@ -43,10 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
             modalTags.appendChild(span);
         });
 
-        // Contenido HTML (Maneja si es String o Array)
-        modalText.innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
+        document.getElementById("modalText").innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
 
-        // Configurar botón
+        const modalLink = document.getElementById("modalLink");
         if (p.url) {
             modalLink.href = p.url;
             modalLink.style.display = "inline-block";
@@ -54,32 +44,22 @@ window.addEventListener('DOMContentLoaded', () => {
             modalLink.style.display = "none";
         }
 
-        // Mostrar modal
         modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden"; // Bloquear scroll
-    }
+        document.body.style.overflow = "hidden";
+    };
 
-    function closeModal() {
+    const closeModal = () => {
         modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "auto"; // Liberar scroll
-    }
+        document.body.style.overflow = "auto";
+    };
 
-    // Eventos de cierre
     modalClose?.addEventListener("click", closeModal);
     modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
-    // --- RENDERIZADO DE TARJETAS ---
+    // --- RENDERIZADO ---
     function render() {
         if (!grid) return;
         grid.innerHTML = "";
-
-        if (filtered.length === 0) {
-            grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">No se encontraron proyectos.</p>`;
-            return;
-        }
 
         const totalPages = Math.ceil(filtered.length / pageSize);
         const start = (page - 1) * pageSize;
@@ -88,15 +68,12 @@ window.addEventListener('DOMContentLoaded', () => {
         slice.forEach(p => {
             const card = document.createElement("div");
             card.className = "card";
-
-            // Vincular la función openModal
-            card.onclick = () => openModal(p);
-
+            card.onclick = () => openModal(p); // Asignación directa
             card.innerHTML = `
-                <img src="${p.cover || ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x220?text=Error+Imagen'">
+                <img src="${p.cover || ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x220?text=Error'">
                 <div class="card-body">
-                    <div class="card-meta">${p.year || ''} • ${p.type || ''}</div>
-                    <div class="card-title">${p.title || 'Sin título'}</div>
+                    <div class="card-meta">${p.year} • ${p.type}</div>
+                    <div class="card-title">${p.title}</div>
                 </div>
             `;
             grid.appendChild(card);
@@ -109,26 +86,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     async function loadData() {
         try {
-            const response = await fetch("data/projects.json");
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-            projects = await response.json();
+            const res = await fetch("data/projects.json");
+            projects = await res.json();
             projects.sort((a, b) => parseInt(b.year) - parseInt(a.year));
             filtered = [...projects];
             render();
-        } catch (error) {
-            console.error("Fallo al cargar el JSON:", error);
-            if (grid) grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ff4e4e;">Error al cargar proyectos.</p>`;
-        }
+        } catch (e) { console.error("Error cargando JSON", e); }
     }
 
-    // Listeners
     searchInput?.addEventListener("input", (e) => {
-        const q = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        filtered = projects.filter(p => {
-            const text = `${p.title} ${p.year} ${p.tags?.join(' ')}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            return text.includes(q);
-        });
+        const q = e.target.value.toLowerCase();
+        filtered = projects.filter(p => p.title.toLowerCase().includes(q));
         page = 1;
         render();
     });
