@@ -11,22 +11,7 @@
         ],
         "cover": "assets/img/projects/proyecto-1.jpg",
         "url": "https://valorsueloamericalatina.org/",
-        "html": "<p>Resumen corto del proyecto. Describe objetivo, método y resultados. Puedes poner listas:</p><ul><li>Datos: ...</li><li>Método: ...</li><li>Salida: ...</li></ul>"
-    },
-    {
-        "id": "presentacion-alejandrolepe",
-        "title": "Presentación Alejandro Lepe",
-        "year": "2025",
-        "type": "Presentación",
-        "tags": [
-            "AI",
-            "City Science"
-        ],
-        "cover": "assets/img/projects/proyecto-2.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
+        "html": "<p>Resumen del proyecto.</p>"
     },
     {
         "id": "hedonic-2025",
@@ -35,68 +20,62 @@
         "type": "Investigación",
         "tags": [
             "Hedonic",
-            "Econometría",
-            "Urban analytics"
+            "Econometría"
         ],
         "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+        "html": "<p>Contenido del proyecto.</p>"
     },
     {
-        "id": "calculadora-plusvalia-2025",
-        "title": "Calculadora de plusvalía",
+        "id": "hedonic-2025",
+        "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
-        "type": "Proyecto",
+        "type": "Investigación",
         "tags": [
             "Hedonic",
-            "Econometría",
-            "Urban analytics"
+            "Econometría"
         ],
-        "cover": "assets/img/projects/proyecto-4.jpg",
+        "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+        "html": "<p>Contenido del proyecto.</p>"
     },
     {
-        "id": "calculadora-habitabilidad",
-        "title": "Calculadora de habitabilidad",
+        "id": "hedonic-2025",
+        "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
-        "type": "Proyecto",
+        "type": "Investigación",
         "tags": [
-            "Hábitat",
-            "Econometría",
-            "Urban analytics"
+            "Hedonic",
+            "Econometría"
         ],
-        "cover": "assets/img/projects/proyecto-5.jpg",
+        "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+        "html": "<p>Contenido del proyecto.</p>"
     },
     {
-        "id": "Levantamiento-dron-costco",
-        "title": "Levantamiento topográfico con dron",
+        "id": "hedonic-2025",
+        "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
-        "type": "Proyecto",
+        "type": "Investigación",
         "tags": [
-            "Dron",
-            "Topografía",
-            "Urban analytics"
+            "Hedonic",
+            "Econometría"
         ],
-        "cover": "assets/img/projects/proyecto-6.jpg",
+        "cover": "assets/img/projects/proyecto-3.jpg",
         "url": "https://github.com/apciudad",
-        "html": "<p>Resumen corto. Aquí puedes meter links como <a href='https://example.com' target='_blank' rel='noopener'>este</a>.</p>"
+        "html": "<p>Contenido del proyecto.</p>"
     },
     {
-        "id": "expansion-urbana-2025",
-        "title": "Expansión urbana",
+        "id": "hedonic-2025",
+        "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
-        "type": "Proyecto",
+        "type": "Investigación",
         "tags": [
-            "AI",
-            "City Science"
+            "Hedonic",
+            "Econometría"
         ],
-        "cover": "assets/img/projects/projecto-7.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
+        "cover": "assets/img/projects/proyecto-3.jpg",
+        "url": "https://github.com/apciudad",
+        "html": "<p>Contenido del proyecto.</p>"
     }
 ]
