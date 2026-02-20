@@ -1,4 +1,3 @@
-/* ================= VARIABLES Y BASE ================= */
 :root {
     --bg: #0b1220;
     --panel: #0f1b33;
@@ -26,7 +25,7 @@ body {
     line-height: 1.6;
 }
 
-/* ================= NAVEGACIÓN (FIXED) ================= */
+/* --- Navegación --- */
 .nav {
     display: flex;
     justify-content: space-between;
@@ -44,7 +43,6 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 20px;
-    letter-spacing: 0.5px;
 }
 
 .brand .role {
@@ -53,45 +51,46 @@ body {
     font-size: 13px;
 }
 
-/* Reemplaza o añade esto a tu sección de .links */
+.links {
+    display: flex;
+    gap: 20px;
+}
+
 .links a {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--muted);
-    /* Color más suave por defecto */
     text-decoration: none;
     position: relative;
-    padding: 5px 0;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .links a:hover {
     color: var(--accent);
 }
 
-/* Línea animada inferior */
 .links a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 0;
+    bottom: -4px;
     left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
+    background: var(--accent);
+    transition: width 0.3s;
 }
 
 .links a:hover::after {
     width: 100%;
 }
 
-/* ================= INTRO / HERO ================= */
+/* --- Hero --- */
 .intro {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 5%;
+    padding: 60px 5%;
     display: flex;
     gap: 40px;
     align-items: center;
@@ -114,11 +113,10 @@ body {
     border-radius: 50%;
     border: 3px solid var(--accent);
     object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
 
-/* ================= PROYECTOS Y TOOLBAR ================= */
+/* --- Proyectos --- */
 .section {
     padding: 60px 5%;
     max-width: 1200px;
@@ -149,24 +147,11 @@ body {
     padding: 12px 18px;
     border-radius: 10px;
     color: white;
-    outline: none;
-}
-
-.search:focus {
-    border-color: var(--accent);
-}
-
-.select {
-    background: var(--panel);
-    color: white;
-    border: 1px solid var(--border);
-    padding: 10px;
-    border-radius: 10px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
@@ -176,7 +161,7 @@ body {
     border: 1px solid var(--border);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s;
 }
 
 .card:hover {
@@ -191,23 +176,10 @@ body {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 15px;
 }
 
-.card-title {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    margin: 5px 0;
-}
-
-.card-meta {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-}
-
-/* ================= CV SECTION ================= */
+/* --- CV --- */
 .cv-container {
     padding: 80px 5%;
     background: rgba(255, 255, 255, 0.02);
@@ -217,56 +189,31 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .cv-column h3 {
     color: var(--accent);
     font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1.5px;
+    text-transform: uppercase;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-    margin-top: 35px;
+    padding-bottom: 8px;
+    margin: 30px 0 15px;
 }
 
-.cv-column h3:first-child {
-    margin-top: 0;
-}
-
-.cv-item {
-    margin-bottom: 25px;
-}
-
-.cv-item h4 {
-    margin: 0 0 5px;
-    font-size: 17px;
-}
-
-/* Estilo para los links dentro del CV */
 .cv-item a {
     color: var(--accent);
     background: rgba(78, 161, 255, 0.08);
-    /* Fondo muy sutil */
     padding: 2px 8px;
     border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    transition: 0.2s;
 }
 
 .cv-item a:hover {
-    background: rgba(78, 161, 255, 0.15);
-    border-color: rgba(78, 161, 255, 0.3);
-    text-decoration: none;
-    color: var(--text);
-}
-
-.cv-meta {
-    color: var(--muted);
-    font-size: 13px;
-    display: block;
-    margin-bottom: 10px;
+    background: rgba(78, 161, 255, 0.2);
 }
 
 .skills-list {
@@ -280,32 +227,36 @@ body {
     border: 1px solid rgba(78, 161, 255, 0.2);
     padding: 5px 12px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
 }
 
-/* ================= MODAL ================= */
+/* --- Modal --- */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(5, 10, 18, 0.9);
+    background: rgba(5, 10, 18, 0.95);
     display: none;
     z-index: 2000;
-    padding: 40px 20px;
+    padding: 20px;
     overflow-y: auto;
+    backdrop-filter: blur(10px);
 }
 
 .modal.active {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .modal-body {
     background: var(--panel);
     max-width: 800px;
-    margin: 0 auto;
-    border-radius: 15px;
-    overflow: hidden;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--border);
     position: relative;
+    margin: auto;
 }
 
 .modal-img {
@@ -315,89 +266,55 @@ body {
     object-fit: cover;
 }
 
+.modal-content-wrapper {
+    padding: 30px 40px;
+}
+
+/* Padding lateral para que no pegue al borde */
 .modal-close {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 30px;
-    color: white;
+    font-size: 24px;
     background: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     z-index: 10;
 }
 
-/* Botón de descarga en el CV */
-.cv-download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0b1220 !important;
+    font-weight: 800;
+    padding: 12px 20px;
+    border-radius: 10px;
     margin-top: 20px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(78, 161, 255, 0.3);
+    text-decoration: none;
 }
 
-.cv-download-btn:hover {
-    background: var(--accent2);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(78, 161, 255, 0.4);
-}
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+    }
 
-/* ================= MEDIA QUERIES (RESPONSIVE) ================= */
-@media (max-width: 850px) {
     .intro {
         flex-direction: column-reverse;
         text-align: center;
-        padding: 40px 5%;
     }
 
     .cv-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-    }
-}
-
-@media (max-width: 600px) {
-    .nav {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        gap: 30px;
     }
 
-    .links {
-        gap: 12px;
-    }
-
-    .links a {
-        font-size: 11px;
-    }
-
-    .brand .name {
-        font-size: 18px;
-    }
-
-    .profile {
-        width: 130px;
-        height: 130px;
-    }
-
-    .section-title {
-        font-size: 22px;
-    }
-
-    .modal-body {
-        width: 100%;
+    .modal-content-wrapper {
+        padding: 20px;
     }
 }

@@ -37,7 +37,6 @@
     <main>
         <section id="work" class="section">
             <h2 class="section-title">Proyectos</h2>
-
             <div class="toolbar">
                 <input type="text" id="searchInput" class="search" placeholder="Buscar proyectos...">
                 <select id="pageSize" class="select">
@@ -47,8 +46,8 @@
             </div>
 
             <div id="projectGrid" class="grid">
-                <p id="loadingMessage" style="grid-column: 1/-1; text-align: center; color: var(--muted);">Conectando
-                    con el servidor de proyectos...</p>
+                <p id="loadingMessage" style="grid-column: 1/-1; text-align: center; color: var(--muted);">Cargando
+                    proyectos...</p>
             </div>
 
             <div class="pagination">
@@ -58,24 +57,20 @@
             </div>
         </section>
 
-        <!-- Compact CV Section (ORIGINAL STYLE) -->
         <section id="cv" class="cv-container">
             <div class="section-title">Curriculum Vitae</div>
-
             <div class="cv-grid">
-                <!-- Left Column: Info & Education -->
                 <div class="cv-column">
                     <h3>Contact & Skills</h3>
-
                     <div class="cv-item">
                         <p>
-                            <strong>Email:</strong> <a href="mailto:tu_correo@dominio.com">tu_correo@dominio.com</a><br>
+                            <strong>Email:</strong> <a
+                                href="mailto:urbanistalepe@gmail.com">urbanistalepe@gmail.com</a><br>
                             <strong>Links:</strong>
                             <a href="https://github.com/apciudad" target="_blank" rel="noopener">GitHub</a> /
-                            <a href="https://linkedin.com/in/usuario" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="https://linkedin.com/in/alejandrolepe" target="_blank" rel="noopener">LinkedIn</a>
                         </p>
                     </div>
-
                     <div class="cv-item">
                         <h4>Technical Tools</h4>
                         <div class="skills-list">
@@ -83,88 +78,44 @@
                             <span>R</span> <span>GeoServer</span> <span>Docker</span> <span>Git</span>
                         </div>
                     </div>
-
                     <h3>Education</h3>
                     <div class="cv-item">
                         <h4>Master’s in City Science</h4>
                         <span class="cv-meta">2024–2026 | Universidad de Guadalajara</span>
                     </div>
-
-                    <div class="cv-item">
-                        <h4>Bachelor’s in Urbanism & Environment</h4>
-                        <span class="cv-meta">2018–2023 | Universidad de Guadalajara</span>
-                    </div>
-
-                    <h3>Awards</h3>
-                    <div class="cv-item">
-                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
-                            <li>Reconocimiento / Beca / Premio (Año)</li>
-                            <li>Otro reconocimiento (Año)</li>
-                        </ul>
-                    </div>
-
-                    <h3>Languages</h3>
-                    <div class="cv-item">
-                        <p class="cv-desc" style="line-height: 1.8;">
-                            <strong>Spanish:</strong> Native<br>
-                            <strong>English:</strong> Advanced (C1)<br>
-                        </p>
-                    </div>
                 </div>
-
-                <!-- Right Column: Experience -->
                 <div class="cv-column">
                     <h3>Experience</h3>
-
                     <div class="cv-item">
-                        <h4>
-                            GIS Coordinator
-                            <!-- si quieres link a un proyecto del modal, usa esto -->
-                            <!-- <a onclick="openModal('mvsl-2026')" class="cv-link-icon" title="Ver proyecto relacionado">🔗</a> -->
-                        </h4>
+                        <h4>GIS Coordinator</h4>
                         <span class="cv-meta">IMEPLAN | 2023 – Actual</span>
                         <div class="cv-desc">
                             <ul>
-                                <li>Indicadores urbanos, análisis territorial y tableros.</li>
-                                <li>Infraestructura de datos espaciales (PostGIS/GeoServer).</li>
-                                <li>Soporte a planeación metropolitana y proyectos de suelo.</li>
+                                <li>Indicadores urbanos y análisis territorial.</li>
+                                <li>Infraestructura de datos espaciales.</li>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="cv-item">
-                        <h4>
-                            Research / City Science
-                            <!-- <a onclick="openModal('hedonic-2025')" class="cv-link-icon" title="Ver proyecto relacionado">🔗</a> -->
-                        </h4>
-                        <span class="cv-meta">City Science Lab UDG | 2022 – Actual</span>
-                        <div class="cv-desc">
-                            <ul>
-                                <li>Modelos hedónicos y valuación masiva.</li>
-                                <li>Mapas de valores del suelo (AL) y expansión urbana.</li>
-                                <li>Visualización y comunicación de evidencia para tomadores de decisión.</li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
+    </main>
 
-
-        <div id="modal" class="modal" aria-hidden="true">
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-body">
             <button id="modalClose" class="modal-close">×</button>
-            <div class="modal-body">
-                <img id="modalImg" class="modal-img" src="" alt="" />
+            <img id="modalImg" class="modal-img" src="" alt="" />
+            <div class="modal-content-wrapper">
                 <div id="modalTags" class="tags"></div>
-                <div id="modalMeta" class="meta"></div>
                 <h3 id="modalTitle" class="modal-title"></h3>
+                <div id="modalMeta" class="meta"></div>
                 <div id="modalText" class="modal-text"></div>
                 <a id="modalLink" class="btn" target="_blank">Ver proyecto</a>
             </div>
         </div>
+    </div>
 
-        <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
