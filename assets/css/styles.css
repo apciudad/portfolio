@@ -53,23 +53,38 @@ body {
     font-size: 13px;
 }
 
-.links {
-    display: flex;
-    gap: 20px;
-}
-
+/* Reemplaza o añade esto a tu sección de .links */
 .links a {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text);
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    /* Color más suave por defecto */
     text-decoration: none;
-    transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
 }
 
 .links a:hover {
     color: var(--accent);
+}
+
+/* Línea animada inferior */
+.links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.links a:hover::after {
+    width: 100%;
 }
 
 /* ================= INTRO / HERO ================= */
@@ -228,6 +243,25 @@ body {
     font-size: 17px;
 }
 
+/* Estilo para los links dentro del CV */
+.cv-item a {
+    color: var(--accent);
+    background: rgba(78, 161, 255, 0.08);
+    /* Fondo muy sutil */
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.cv-item a:hover {
+    background: rgba(78, 161, 255, 0.15);
+    border-color: rgba(78, 161, 255, 0.3);
+    text-decoration: none;
+    color: var(--text);
+}
+
 .cv-meta {
     color: var(--muted);
     font-size: 13px;
@@ -294,6 +328,31 @@ body {
     height: 40px;
     cursor: pointer;
     z-index: 10;
+}
+
+/* Botón de descarga en el CV */
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(78, 161, 255, 0.3);
+}
+
+.cv-download-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 161, 255, 0.4);
 }
 
 /* ================= MEDIA QUERIES (RESPONSIVE) ================= */
