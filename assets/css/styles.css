@@ -1,3 +1,4 @@
+/* ================= VARIABLES Y BASE ================= */
 :root {
     --bg: #0b1220;
     --panel: #0f1b33;
@@ -13,64 +14,79 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-    background: radial-gradient(1200px 700px at 20% 0%, #13254a 0%, var(--bg) 55%);
-    color: var(--text);
-    line-height: 1.5;
+html {
+    scroll-behavior: smooth;
 }
 
-/* --- Navegación Responsiva --- */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: radial-gradient(1200px 700px at 20% 0%, #13254a 0%, var(--bg) 55%);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ================= NAVEGACIÓN (FIXED) ================= */
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 20px 5%;
     border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-    gap: 15px;
+    background: rgba(11, 18, 32, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .brand .name {
-    font-family: Raleway, sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 20px;
+    letter-spacing: 0.5px;
 }
 
 .brand .role {
     color: var(--muted);
     font-weight: 300;
-    font-size: 0.85rem;
+    font-size: 13px;
 }
 
 .links {
     display: flex;
-    gap: 15px;
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    gap: 20px;
 }
 
-/* --- Intro / Hero --- */
+.links a {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: var(--accent);
+}
+
+/* ================= INTRO / HERO ================= */
 .intro {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 5%;
+    padding: 80px 5%;
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
     justify-content: center;
 }
 
 .intro-text p {
-    margin: 0;
-    max-width: 520px;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--muted);
-    line-height: 1.6;
+    max-width: 550px;
 }
 
 .intro-text strong {
@@ -78,42 +94,74 @@ body {
 }
 
 .profile {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     border: 3px solid var(--accent);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
 
-/* --- Secciones y Grid --- */
+/* ================= PROYECTOS Y TOOLBAR ================= */
 .section {
-    padding: 40px 5%;
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .section-title {
-    font-family: Raleway, sans-serif;
-    display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 4px solid var(--accent);
-    margin-bottom: 25px;
-    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 26px;
     font-weight: 800;
+    border-bottom: 4px solid var(--accent);
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px 18px;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+}
+
+.search:focus {
+    border-color: var(--accent);
+}
+
+.select {
+    background: var(--panel);
+    color: white;
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
 .card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+    background: var(--panel);
+    border-radius: 15px;
     border: 1px solid var(--border);
-    border-radius: 14px;
     overflow: hidden;
-    transition: transform .2s, border-color .2s;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .card:hover {
@@ -125,50 +173,46 @@ body {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
 }
 
 .card-body {
-    padding: 15px;
+    padding: 20px;
+}
+
+.card-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    margin: 5px 0;
 }
 
 .card-meta {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
     text-transform: uppercase;
 }
 
-.card-title {
-    margin-top: 5px;
-    font-family: Raleway, sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-}
-
-/* --- CV Section --- */
+/* ================= CV SECTION ================= */
 .cv-container {
-    padding: 60px 5%;
-    background: rgba(255, 255, 255, 0.01);
-    border-top: 1px solid var(--border);
+    padding: 80px 5%;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .cv-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 50px;
-    max-width: 1100px;
-    margin: 0 auto;
+    gap: 60px;
 }
 
 .cv-column h3 {
     color: var(--accent);
-    font-family: Raleway, sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.1em;
+    font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1.5px;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-    margin: 30px 0 15px;
+    padding-bottom: 10px;
+    margin-top: 35px;
 }
 
 .cv-column h3:first-child {
@@ -176,62 +220,58 @@ body {
 }
 
 .cv-item {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .cv-item h4 {
-    font-family: Raleway, sans-serif;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
+    font-size: 17px;
 }
 
 .cv-meta {
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: 13px;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 10px;
 }
 
 .skills-list span {
     background: var(--chip-bg);
     border: 1px solid rgba(78, 161, 255, 0.2);
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 6px;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
 }
 
-/* --- Modal --- */
+/* ================= MODAL ================= */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(5, 10, 18, .9);
+    background: rgba(5, 10, 18, 0.9);
     display: none;
-    padding: 20px;
-    z-index: 1000;
+    z-index: 2000;
+    padding: 40px 20px;
     overflow-y: auto;
 }
 
 .modal.active {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    display: block;
 }
 
 .modal-body {
     background: var(--panel);
-    width: 100%;
     max-width: 800px;
-    border-radius: 16px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
     position: relative;
-    margin: auto;
 }
 
 .modal-img {
@@ -247,54 +287,58 @@ body {
     right: 15px;
     font-size: 30px;
     color: white;
-    background: none;
+    background: rgba(0, 0, 0, 0.5);
     border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     z-index: 10;
 }
 
-/* --- Toolbar & Pagers --- */
-.toolbar {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-    align-items: center;
+/* ================= MEDIA QUERIES (RESPONSIVE) ================= */
+@media (max-width: 850px) {
+    .intro {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }
 
-.search {
-    flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-}
+@media (max-width: 600px) {
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
 
-.select {
-    padding: 12px;
-    border-radius: 10px;
-    background: var(--panel);
-    color: white;
-    border: 1px solid var(--border);
-}
+    .links {
+        gap: 12px;
+    }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
+    .links a {
+        font-size: 11px;
+    }
 
-.pager-btn {
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--accent);
-    background: none;
-    color: white;
-    cursor: pointer;
-}
+    .brand .name {
+        font-size: 18px;
+    }
 
-.pager-btn:disabled {
-    opacity: 0.4;
+    .profile {
+        width: 130px;
+        height: 130px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .modal-body {
+        width: 100%;
+    }
 }
