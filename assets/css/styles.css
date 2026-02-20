@@ -31,12 +31,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    border-bottom: 1px solid var(--border);
     background: rgba(11, 18, 32, 0.95);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--border);
 }
 
 .brand .name {
@@ -47,7 +47,6 @@ body {
 
 .brand .role {
     color: var(--muted);
-    font-weight: 300;
     font-size: 13px;
 }
 
@@ -60,37 +59,21 @@ body {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--muted);
     text-decoration: none;
-    position: relative;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
 .links a:hover {
     color: var(--accent);
 }
 
-.links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background: var(--accent);
-    transition: width 0.3s;
-}
-
-.links a:hover::after {
-    width: 100%;
-}
-
 /* --- Hero --- */
 .intro {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 60px 5%;
+    padding: 80px 5%;
     display: flex;
     gap: 40px;
     align-items: center;
@@ -98,13 +81,9 @@ body {
 }
 
 .intro-text p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--muted);
-    max-width: 550px;
-}
-
-.intro-text strong {
-    color: var(--accent);
+    max-width: 600px;
 }
 
 .profile {
@@ -113,55 +92,28 @@ body {
     border-radius: 50%;
     border: 3px solid var(--accent);
     object-fit: cover;
-    flex-shrink: 0;
 }
 
-/* --- Proyectos --- */
+/* --- Grid de Proyectos --- */
 .section {
     padding: 60px 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.section-title {
-    font-family: 'Raleway', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    border-bottom: 4px solid var(--accent);
-    display: inline-block;
-    margin-bottom: 30px;
-}
-
-.toolbar {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.search {
-    flex: 1;
-    min-width: 250px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    padding: 12px 18px;
-    border-radius: 10px;
-    color: white;
-}
-
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
 }
 
 .card {
     background: var(--panel);
-    border-radius: 15px;
+    border-radius: 12px;
     border: 1px solid var(--border);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: 0.3s;
 }
 
 .card:hover {
@@ -176,71 +128,18 @@ body {
 }
 
 .card-body {
-    padding: 15px;
+    padding: 20px;
 }
 
-/* --- CV --- */
-.cv-container {
-    padding: 80px 5%;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.cv-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.cv-column h3 {
-    color: var(--accent);
-    font-family: 'Raleway', sans-serif;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-    margin: 30px 0 15px;
-}
-
-.cv-item a {
-    color: var(--accent);
-    background: rgba(78, 161, 255, 0.08);
-    padding: 2px 8px;
-    border-radius: 4px;
-    transition: 0.2s;
-}
-
-.cv-item a:hover {
-    background: rgba(78, 161, 255, 0.2);
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.skills-list span {
-    background: var(--chip-bg);
-    border: 1px solid rgba(78, 161, 255, 0.2);
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-/* --- Modal --- */
+/* --- MODAL (Diseño Centrado) --- */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(5, 10, 18, 0.95);
+    background: rgba(5, 10, 18, 0.96);
     display: none;
     z-index: 2000;
     padding: 20px;
     overflow-y: auto;
-    backdrop-filter: blur(10px);
 }
 
 .modal.active {
@@ -251,12 +150,13 @@ body {
 
 .modal-body {
     background: var(--panel);
-    max-width: 800px;
+    max-width: 850px;
     width: 100%;
+    margin: auto;
     border-radius: 20px;
     border: 1px solid var(--border);
     position: relative;
-    margin: auto;
+    overflow: hidden;
 }
 
 .modal-img {
@@ -266,21 +166,72 @@ body {
     object-fit: cover;
 }
 
+/* Wrapper Centrado */
 .modal-content-wrapper {
-    padding: 30px 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra los elementos */
+    text-align: center;
+    /* Centra el texto */
 }
 
-/* Padding lateral para que no pegue al borde */
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tags span,
+.modal-tag {
+    background: var(--chip-bg);
+    color: var(--accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    font-family: 'Raleway', sans-serif;
+    margin: 10px 0;
+    line-height: 1.2;
+}
+
+.meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* El texto largo se alinea a la izquierda dentro del bloque centrado para legibilidad */
+.modal-text-body {
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+}
+
+.modal-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
 .modal-close {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 24px;
-    background: rgba(0, 0, 0, 0.5);
+    font-size: 28px;
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
@@ -289,12 +240,54 @@ body {
 .btn {
     display: inline-block;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #0b1220 !important;
-    font-weight: 800;
-    padding: 12px 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 35px;
+    border-radius: 50px;
     text-decoration: none;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(47, 111, 255, 0.3);
+}
+
+/* --- CV Section --- */
+.cv-container {
+    padding: 80px 5%;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.cv-column h3 {
+    color: var(--accent);
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.skills-list span {
+    background: var(--chip-bg);
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
 /* --- Responsive --- */
@@ -309,12 +302,15 @@ body {
         text-align: center;
     }
 
-    .cv-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .modal-title {
+        font-size: 1.8rem;
     }
 
     .modal-content-wrapper {
-        padding: 20px;
+        padding: 25px;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
     }
 }
