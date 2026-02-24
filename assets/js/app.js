@@ -149,18 +149,44 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById("modalImg").src = p.cover || '';
         document.getElementById("modalTitle").textContent = p.title || '';
         document.getElementById("modalMeta").textContent = `${p.year} • ${p.type}`;
-        const modalTags = document.getElementById("modalTags");
-        modalTags.innerHTML = "";
-        (p.tags || []).forEach(t => {
-            const span = document.createElement("span");
-            span.className = "tag";
-            span.textContent = t;
-            modalTags.appendChild(span);
-        });
         document.getElementById("modalText").innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
-        const modalLink = document.getElementById("modalLink");
-        modalLink.href = p.url || "#";
-        modalLink.style.display = p.url ? "inline-block" : "none";
+
+        // --- LÓGICA DE SUGERENCIAS ---
+        const suggestionsGrid = document.getElementById("suggestionsGrid");
+        if (suggestionsGrid) {
+            suggestionsGrid.innerHTML = "";
+
+            // 1. Filtrar proyectos que compartan etiquetas (excluyendo el actual)
+            let related = projects.filter(item =>
+                item.id !== p.id &&
+                item.tags.some(tag => p.tags.includes(tag))
+            );
+
+            // 2. Si hay pocos relacionados, rellenar con los más recientes
+            if (related.length < 3) {
+                const extras = projects.filter(item => item.id !== p.id && !related.includes(item));
+                related = [...related, ...extras];
+            }
+
+            // 3. Mostrar solo los primeros 3
+            related.slice(0, 3).forEach(rel => {
+                const sugCard = document.createElement("div");
+                sugCard.className = "card";
+                sugCard.style.fontSize = "0.85rem"; // Versión mini para sugerencias
+                sugCard.onclick = (e) => {
+                    e.stopPropagation();
+                    openModal(rel); // Permite navegar entre sugerencias
+                    document.getElementById("modal").scrollTo(0, 0); // Sube al inicio del modal
+                };
+                sugCard.innerHTML = `
+                <img src="${rel.cover}" alt="${rel.title}" style="height: 120px;">
+                <div class="card-body" style="padding: 10px;">
+                    <div class="card-title" style="font-size: 0.9rem;">${rel.title}</div>
+                </div>`;
+                suggestionsGrid.appendChild(sugCard);
+            });
+        }
+
         modal.classList.add("active");
         document.body.style.overflow = "hidden";
     };

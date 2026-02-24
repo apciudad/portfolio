@@ -169,5 +169,38 @@
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
         ]
+    },
+    {
+        "id": "participacion-activa-valor",
+        "pinned": true,
+        "title": "La participación activa y su valor en la ciudad",
+        "year": "2025",
+        "type": "Blog",
+        "tags": [
+            "Participación Ciudadana",
+            "Políticas Públicas",
+            "Planeación Urbana"
+        ],
+        "cover": "assets/img/projects/proyecto-participacion.jpg",
+        "url": "",
+        "html": [
+            "<h3>La participación activa y su valor</h3>",
+            "<p>Las decisiones en la ciudad son una apuesta ya que no sabemos con claridad los impactos o efectos que harán en las diferentes funciones de la ciudad. Por ejemplo, la decisión de áreas de crecimiento a futuro, impactará desde el proceso en que se planifican generando fenómenos como especulación. Este efecto también podemos verlo cuando se construyen nuevas líneas de transporte público, equipamientos o parques. Por lo tanto, la ciudad se ve afectada por leyes económicas que William Alonso desarrolla en un contexto urbano.</p>",
+            "<h3>El valor que genera en la ciudad lo hace sus habitantes</h3>",
+            "<p>Entender el valor que tiene una ciudad y su poder decisión es complejo. El valor se puede medir desde diferentes ejes. Pero en este texto, el peso se lo daremos al poder que tiene la población en tomar decisiones en la mejora de su entorno.</p>",
+            "<p>¿Quién se queda con este valor? El estilo de vida en las ciudades puede que no dé para que toda la gente participe y, por lo tanto, terminarán decidiendo los que tienen mayor disponibilidad para atender las decisiones y no necesariamente es la gente que sabe más. Esto genera desigualdades y externalidades al ejercer las políticas públicas.</p>",
+            "<h3>Herramientas: Metodologías participativas y transparencia</h3>",
+            "<p>La participación es el pilar que marca el rumbo del desarrollo. Sin embargo, en los instrumentos actuales, se ve reducida a tiempos específicos (como una actualización cada 3 años), limitando la sinergia entre actores.</p>",
+            "<h3>Hacia una negociación de pesos reales</h3>",
+            "<p>A la hora de participar, la lógica marca que todos deberían aportar su opinión técnica en la conceptualización final. Es vital dar peso al consenso que permita una discusión sana.</p>",
+            "<h3>La ciudad como objeto, soporte y plataforma</h3>",
+            "<p>Después de tomar una decisión ¿Será lo mejor para la ciudad? Podemos encontrar principalmente tres posiciones en este planteamiento:</p>",
+            "<ul>",
+            "<li><strong>La población:</strong> Conocen las necesidades directas de su barrio y zonas inseguras.</li>",
+            "<li><strong>La parte económica:</strong> Relacionada a la localización de inversiones y visión de funcionamiento económico.</li>",
+            "<li><strong>La necesidad real de la ciudad:</strong> La visión sistémica que teóricamente posee el gobierno sobre requerimientos globales de equipamiento e inversión.</li>",
+            "</ul>",
+            "<p>Las herramientas para hacer un mejor consenso son necesarias; buscar ese equilibrio permitirá un sólido desarrollo urbano y devolverá el valor a los procesos de planeación.</p>"
+        ]
     }
 ]
