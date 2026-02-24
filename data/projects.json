@@ -1,6 +1,7 @@
 [
     {
         "id": "mvsl-2026",
+        "pinned": true,
         "title": "Mapa de Valores del Suelo para el Área Metropolitana de Guadalajara (piloto)",
         "year": "2026",
         "type": "Proyecto",
@@ -15,6 +16,7 @@
     },
     {
         "id": "presentacion-alejandrolepe",
+        "pinned": true,
         "title": "Presentación Alejandro Lepe",
         "year": "2025",
         "type": "Presentación",
@@ -30,6 +32,7 @@
     },
     {
         "id": "hedonic-2025",
+        "pinned": false,
         "title": "Modelo hedónico para pronóstico de valor de suelo",
         "year": "2025",
         "type": "Investigación",
@@ -44,6 +47,7 @@
     },
     {
         "id": "calculadora-plusvalia-2025",
+        "pinned": false,
         "title": "Calculadora de plusvalía",
         "year": "2025",
         "type": "Proyecto",
@@ -58,6 +62,7 @@
     },
     {
         "id": "calculadora-habitabilidad",
+        "pinned": false,
         "title": "Calculadora de habitabilidad",
         "year": "2025",
         "type": "Proyecto",
@@ -72,6 +77,7 @@
     },
     {
         "id": "Levantamiento-dron-costco",
+        "pinned": false,
         "title": "Levantamiento topográfico con dron",
         "year": "2025",
         "type": "Proyecto",
@@ -86,6 +92,7 @@
     },
     {
         "id": "expansion-urbana-2025",
+        "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
         "type": "Proyecto",
@@ -101,6 +108,7 @@
     },
     {
         "id": "expansion-urbana-20244",
+        "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
         "type": "Proyecto",
@@ -116,6 +124,7 @@
     },
     {
         "id": "expansion-urbana-20283",
+        "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
         "type": "Proyecto",
@@ -131,6 +140,7 @@
     },
     {
         "id": "expansion-urbana-2028",
+        "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
         "type": "Proyecto",
@@ -146,6 +156,7 @@
     },
     {
         "id": "expansion-urbana-2027",
+        "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
         "type": "Proyecto",

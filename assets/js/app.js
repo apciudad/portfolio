@@ -88,9 +88,11 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch("data/projects.json");
             projects = await res.json();
-            projects.sort((a, b) => parseInt(b.year) - parseInt(a.year));
-            filtered = [...projects];
-            render();
+            projects = projects.sort((a, b) => {
+                if (a.pinned && !b.pinned) return -1;
+                if (!a.pinned && b.pinned) return 1;
+                return 0; // Mantiene el orden original para el resto
+            });
         } catch (e) { console.error("Error cargando JSON", e); }
     }
 
@@ -111,4 +113,10 @@ window.addEventListener('DOMContentLoaded', () => {
     nextBtn?.addEventListener("click", () => { if ((page * pageSize) < filtered.length) { page++; render(); } });
 
     loadData();
+    let currentSlide = 0;
+    function moveSlide(step) {
+        const slides = document.querySelectorAll(".carousel-slide img");
+        currentSlide = (currentSlide + step + slides.length) % slides.length;
+        document.querySelector(".carousel-slide").style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
 });
