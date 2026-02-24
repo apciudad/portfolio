@@ -151,6 +151,18 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById("modalMeta").textContent = `${p.year} • ${p.type}`;
         document.getElementById("modalText").innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
 
+        const modalLink = document.getElementById("modalLink");
+        if (modalLink) {
+            if (p.url && p.url.trim() !== "") {
+                modalLink.href = p.url;
+                modalLink.style.display = "inline-block";
+                // Cambiamos el texto según el tipo de contenido
+                modalLink.textContent = (p.type === "Blog") ? "Leer artículo completo" : "Ver proyecto";
+            } else {
+                modalLink.style.display = "none"; // Se oculta si no hay link en el JSON
+            }
+        }
+
         // --- LÓGICA DE SUGERENCIAS ---
         const suggestionsGrid = document.getElementById("suggestionsGrid");
         if (suggestionsGrid) {

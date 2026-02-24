@@ -24,8 +24,8 @@
             "AI",
             "City Science"
         ],
-        "cover": "assets/img/projects/proyecto-2.jpg",
-        "url": "https://github.com/apciudad/demo",
+        "cover": "assets/img/projects/lepe.jpg",
+        "url": "",
         "html": [
             "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
         ]
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "id": "expansion-urbana-2027",
+        "id": "expansion-urbana-2024",
         "pinned": false,
         "title": "Expansión urbana",
         "year": "2025",
@@ -174,7 +174,7 @@
         "id": "participacion-activa-valor",
         "pinned": true,
         "title": "Manifiesto urbano Parte 1 - La participación activa y su valor en la ciudad",
-        "year": "2025",
+        "year": "2026",
         "type": "Blog",
         "tags": [
             "Participación Ciudadana",
@@ -182,7 +182,7 @@
             "Planeación Urbana"
         ],
         "cover": "assets/img/projects/proyecto-participacion.jpg",
-        "url": "",
+        "url": "https://github.com/apciudad/demo",
         "html": [
             "<h3>La participación activa y su valor</h3>",
             "<p>Las decisiones en la ciudad son una apuesta ya que no sabemos con claridad los impactos o efectos que harán en las diferentes funciones de la ciudad. Por ejemplo, la decisión de áreas de crecimiento a futuro, impactará desde el proceso en que se planifican generando fenómenos como especulación. Este efecto también podemos verlo cuando se construyen nuevas líneas de transporte público, equipamientos o parques. Por lo tanto, la ciudad se ve afectada por leyes económicas que William Alonso desarrolla en un contexto urbano.</p>",
@@ -200,7 +200,11 @@
             "<li><strong>La parte económica:</strong> Relacionada a la localización de inversiones y visión de funcionamiento económico.</li>",
             "<li><strong>La necesidad real de la ciudad:</strong> La visión sistémica que teóricamente posee el gobierno sobre requerimientos globales de equipamiento e inversión.</li>",
             "</ul>",
-            "<p>Las herramientas para hacer un mejor consenso son necesarias; buscar ese equilibrio permitirá un sólido desarrollo urbano y devolverá el valor a los procesos de planeación.</p>"
+            "<p>Las herramientas para hacer un mejor consenso son necesarias; buscar ese equilibrio permitirá un sólido desarrollo urbano y devolverá el valor a los procesos de planeación.</p>",
+            "<figure style='margin: 20px 0; text-align: center;'>",
+            "<img src='assets/img/projects/proyecto-participacion.jpg' style='width: 100%; border-radius: 12px; border: 1px solid var(--border);'>",
+            "<figcaption style='color: var(--muted); font-size: 0.8rem; margin-top: 10px;'>Pie de foto: Talleres participativos en la comunidad. Elaborado con IA</figcaption>",
+            "</figure>"
         ]
     }
 ]

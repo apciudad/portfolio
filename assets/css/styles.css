@@ -659,3 +659,21 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Estilo para imágenes dentro del modal de Blog */
+.modal-text img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Ocultar barra de scroll en mini-carrusel pero permitir el movimiento */
+.mini-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.mini-carousel::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
