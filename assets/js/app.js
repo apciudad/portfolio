@@ -1,7 +1,13 @@
-// Definimos la función fuera para que sea accesible globalmente por el atributo onclick
+/**
+ * APP.JS - Portafolio con Proyectos Pineados y Carrusel Automático
+ */
+
+// Definimos las funciones globales para que los atributos onclick del HTML funcionen
 let openModal;
+let moveSlide;
 
 window.addEventListener('DOMContentLoaded', () => {
+    // --- ELEMENTOS DEL DOM ---
     const grid = document.getElementById("projectGrid");
     const searchInput = document.getElementById("searchInput");
     const pageSizeSelect = document.getElementById("pageSize");
@@ -12,10 +18,39 @@ window.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById("modal");
     const modalClose = document.getElementById("modalClose");
 
+    // --- VARIABLES DE ESTADO ---
     let projects = [];
     let filtered = [];
     let page = 1;
     let pageSize = 12;
+
+    // --- LÓGICA DEL CARRUSEL ---
+    let currentSlide = 0;
+    const carouselTrack = document.querySelector(".carousel-slide"); // Asegúrate que esta clase coincida con tu HTML
+
+    moveSlide = function (step) {
+        const slides = document.querySelectorAll(".carousel-slide img");
+        if (slides.length === 0) return;
+
+        currentSlide = (currentSlide + step + slides.length) % slides.length;
+        if (carouselTrack) {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    };
+
+    // Función para el paso automático cada 5 segundos
+    let autoSlideInterval = setInterval(() => {
+        moveSlide(1);
+    }, 5000);
+
+    // Pausar el carrusel si el usuario pasa el ratón por encima (opcional, buena práctica)
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer) {
+        carouselContainer.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+        carouselContainer.addEventListener("mouseleave", () => {
+            autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+        });
+    }
 
     // --- FUNCIÓN DEL MODAL ---
     openModal = function (p) {
@@ -49,26 +84,28 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeModal = () => {
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
+        if (modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
     };
 
     modalClose?.addEventListener("click", closeModal);
     modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 
-    // --- RENDERIZADO ---
+    // --- RENDERIZADO DE PROYECTOS ---
     function render() {
         if (!grid) return;
         grid.innerHTML = "";
 
-        const totalPages = Math.ceil(filtered.length / pageSize);
+        const totalPages = Math.ceil(filtered.length / pageSize) || 1;
         const start = (page - 1) * pageSize;
         const slice = filtered.slice(start, start + pageSize);
 
         slice.forEach(p => {
             const card = document.createElement("div");
             card.className = "card";
-            card.onclick = () => openModal(p); // Asignación directa
+            card.onclick = () => openModal(p);
             card.innerHTML = `
                 <img src="${p.cover || ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x220?text=Error'">
                 <div class="card-body">
@@ -84,18 +121,16 @@ window.addEventListener('DOMContentLoaded', () => {
         if (nextBtn) nextBtn.disabled = (page >= totalPages);
     }
 
+    // --- CARGA DE DATOS ---
     async function loadData() {
         try {
             const res = await fetch("data/projects.json");
             projects = await res.json();
 
-            // Nueva lógica de ordenamiento:
+            // Lógica de ordenamiento: Pinned primero, luego por Año
             projects.sort((a, b) => {
-                // 1. Si uno está "pinned" y el otro no, el "pinned" va primero
                 if (a.pinned && !b.pinned) return -1;
                 if (!a.pinned && b.pinned) return 1;
-
-                // 2. Si ambos son iguales (ambos pinned o ambos normales), se ordenan por año
                 return parseInt(b.year) - parseInt(a.year);
             });
 
@@ -106,9 +141,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- EVENTOS ---
     searchInput?.addEventListener("input", (e) => {
         const q = e.target.value.toLowerCase();
-        filtered = projects.filter(p => p.title.toLowerCase().includes(q));
+        filtered = projects.filter(p =>
+            p.title.toLowerCase().includes(q) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
+        );
         page = 1;
         render();
     });
@@ -120,13 +159,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     prevBtn?.addEventListener("click", () => { if (page > 1) { page--; render(); } });
-    nextBtn?.addEventListener("click", () => { if ((page * pageSize) < filtered.length) { page++; render(); } });
+    nextBtn?.addEventListener("click", () => {
+        const totalPages = Math.ceil(filtered.length / pageSize);
+        if (page < totalPages) { page++; render(); }
+    });
 
     loadData();
-    let currentSlide = 0;
-    function moveSlide(step) {
-        const slides = document.querySelectorAll(".carousel-slide img");
-        currentSlide = (currentSlide + step + slides.length) % slides.length;
-        document.querySelector(".carousel-slide").style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
 });
