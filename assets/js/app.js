@@ -88,12 +88,22 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch("data/projects.json");
             projects = await res.json();
-            projects = projects.sort((a, b) => {
+
+            // Nueva lógica de ordenamiento:
+            projects.sort((a, b) => {
+                // 1. Si uno está "pinned" y el otro no, el "pinned" va primero
                 if (a.pinned && !b.pinned) return -1;
                 if (!a.pinned && b.pinned) return 1;
-                return 0; // Mantiene el orden original para el resto
+
+                // 2. Si ambos son iguales (ambos pinned o ambos normales), se ordenan por año
+                return parseInt(b.year) - parseInt(a.year);
             });
-        } catch (e) { console.error("Error cargando JSON", e); }
+
+            filtered = [...projects];
+            render();
+        } catch (e) {
+            console.error("Error cargando JSON", e);
+        }
     }
 
     searchInput?.addEventListener("input", (e) => {
