@@ -25,15 +25,17 @@
             <a href="mailto:urbanistalepe@gmail.com">Contacto</a>
         </div>
     </nav>
+
     <div class="carousel-container">
         <div class="carousel-slide">
-            <img src="assets/img/projects/proyecto-6-1.jpg" alt="Foto 1">
-            <img src="assets/img/projects/proyecto-2.jpg" alt="Foto 2">
-            <img src="assets/img/projects/proyecto-3.jpg" alt="Foto 3">
-            <img src="assets/img/projects/proyecto-4.jpg" alt="Foto 4">
-            <img src="assets/img/projects/proyecto-5.jpg" alt="Foto 5">
-            <img src="assets/img/projects/proyecto-6.jpg" alt="Foto 6">
+            <img src="assets/img/projects/proyecto-6-1.jpg" alt="Foto 1" loading="lazy">
+            <img src="assets/img/projects/proyecto-2.jpg" alt="Foto 2" loading="lazy">
+            <img src="assets/img/projects/proyecto-3.jpg" alt="Foto 3" loading="lazy">
+            <img src="assets/img/projects/proyecto-4.jpg" alt="Foto 4" loading="lazy">
+            <img src="assets/img/projects/proyecto-5.jpg" alt="Foto 5" loading="lazy">
+            <img src="assets/img/projects/proyecto-6.jpg" alt="Foto 6" loading="lazy">
         </div>
+        <div class="carousel-dots" id="carouselDots"></div>
         <button class="carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="carousel-next" onclick="moveSlide(1)">&#10095;</button>
     </div>
@@ -51,7 +53,11 @@
             <h2 class="section-title">Proyectos</h2>
 
             <div class="toolbar">
-                <input type="text" id="searchInput" class="search" placeholder="Buscar proyectos...">
+                <div class="search-wrapper" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" id="searchInput" class="search" placeholder="Buscar proyectos...">
+                    <div id="filterChips" class="filter-chips">
+                    </div>
+                </div>
                 <select id="pageSize" class="select">
                     <option value="6">6 por página</option>
                     <option value="12" selected>12 por página</option>
@@ -60,7 +66,7 @@
 
             <div id="projectGrid" class="grid">
                 <p id="loadingMessage" style="grid-column: 1/-1; text-align: center; color: var(--muted);">Conectando
-                    con el servidor de proyectos...</p>
+                    con el servidor...</p>
             </div>
 
             <div class="pagination">
@@ -100,13 +106,6 @@
                         <h4>Bachelor’s in Urbanism & Environment</h4>
                         <span class="cv-meta">2018–2023 | Universidad de Guadalajara</span>
                     </div>
-                    <h3>Awards</h3>
-                    <div class="cv-item">
-                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
-                            <li>Reconocimiento / Beca / Premio (Año)</li>
-                            <li>Otro reconocimiento (Año)</li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="cv-column">
                     <h3>Experience</h3>
@@ -120,16 +119,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="cv-item">
-                        <h4>Research / City Science</h4>
-                        <span class="cv-meta">City Science Lab UDG | 2022 – Actual</span>
-                        <div class="cv-desc">
-                            <ul>
-                                <li>Modelos hedónicos y valuación masiva.</li>
-                                <li>Mapas de valores del suelo (AL) y expansión urbana.</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -138,19 +127,18 @@
             <div class="modal-body">
                 <button id="modalClose" class="modal-close">×</button>
                 <img id="modalImg" class="modal-img" src="" alt="" />
-
                 <div class="modal-content-inner">
                     <h3 id="modalTitle" class="modal-title"></h3>
                     <div id="modalTags" class="modal-tags"></div>
                     <div id="modalMeta" class="meta"></div>
                     <div id="modalText" class="modal-text"></div>
-
                     <a id="modalLink" class="btn" target="_blank">Ver proyecto</a>
                 </div>
             </div>
         </div>
+    </main>
 
-        <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

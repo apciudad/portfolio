@@ -1,99 +1,100 @@
 /**
- * APP.JS - Portafolio con Proyectos Pineados y Carrusel Automático
+ * APP.JS - Alejandro Lepe Portfolio
+ * Incluye: Proyectos Pineados, Carrusel Automático con Dots y Filtros Rápidos.
  */
 
-// Definimos las funciones globales para que los atributos onclick del HTML funcionen
 let openModal;
 let moveSlide;
+let setSlide;
 
 window.addEventListener('DOMContentLoaded', () => {
-    // --- ELEMENTOS DEL DOM ---
     const grid = document.getElementById("projectGrid");
     const searchInput = document.getElementById("searchInput");
+    const filterChips = document.getElementById("filterChips");
     const pageSizeSelect = document.getElementById("pageSize");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const pageInfo = document.getElementById("pageInfo");
+    const dotsContainer = document.getElementById("carouselDots");
 
     const modal = document.getElementById("modal");
     const modalClose = document.getElementById("modalClose");
 
-    // --- VARIABLES DE ESTADO ---
     let projects = [];
     let filtered = [];
     let page = 1;
     let pageSize = 12;
+    let currentCategory = "Todos";
 
     // --- LÓGICA DEL CARRUSEL ---
     let currentSlide = 0;
-    const carouselTrack = document.querySelector(".carousel-slide"); // Asegúrate que esta clase coincida con tu HTML
+    const carouselTrack = document.querySelector(".carousel-slide");
+    const slides = document.querySelectorAll(".carousel-slide img");
 
-    moveSlide = function (step) {
-        const slides = document.querySelectorAll(".carousel-slide img");
-        if (slides.length === 0) return;
+    // Generar Dots dinámicamente
+    slides.forEach((_, idx) => {
+        const dot = document.createElement("div");
+        dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+        dot.onclick = () => setSlide(idx);
+        dotsContainer.appendChild(dot);
+    });
 
-        currentSlide = (currentSlide + step + slides.length) % slides.length;
-        if (carouselTrack) {
-            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
+    const updateDots = () => {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
     };
 
-    // Función para el paso automático cada 5 segundos
-    let autoSlideInterval = setInterval(() => {
-        moveSlide(1);
-    }, 5000);
+    setSlide = function (index) {
+        currentSlide = index;
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    };
 
-    // Pausar el carrusel si el usuario pasa el ratón por encima (opcional, buena práctica)
+    moveSlide = function (step) {
+        currentSlide = (currentSlide + step + slides.length) % slides.length;
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    };
+
+    let autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+
     const carouselContainer = document.querySelector(".carousel-container");
-    if (carouselContainer) {
-        carouselContainer.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
-        carouselContainer.addEventListener("mouseleave", () => {
-            autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+    carouselContainer?.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+    carouselContainer?.addEventListener("mouseleave", () => {
+        autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+    });
+
+    // --- FILTROS RÁPIDOS (Categorías) ---
+    function setupFilters() {
+        const types = ["Todos", ...new Set(projects.map(p => p.type))];
+        filterChips.innerHTML = "";
+        types.forEach(type => {
+            const btn = document.createElement("button");
+            btn.className = `filter-btn ${type === "Todos" ? "active" : ""}`;
+            btn.textContent = type;
+            btn.onclick = () => {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentCategory = type;
+                applyFilters();
+            };
+            filterChips.appendChild(btn);
         });
     }
 
-    // --- FUNCIÓN DEL MODAL ---
-    openModal = function (p) {
-        if (!modal) return;
-
-        document.getElementById("modalImg").src = p.cover || '';
-        document.getElementById("modalTitle").textContent = p.title || '';
-        document.getElementById("modalMeta").textContent = `${p.year || ''} • ${p.type || ''}`;
-
-        const modalTags = document.getElementById("modalTags");
-        modalTags.innerHTML = "";
-        (p.tags || []).forEach(t => {
-            const span = document.createElement("span");
-            span.className = "tag";
-            span.textContent = t;
-            modalTags.appendChild(span);
+    function applyFilters() {
+        const q = searchInput.value.toLowerCase();
+        filtered = projects.filter(p => {
+            const matchesSearch = p.title.toLowerCase().includes(q) ||
+                (p.tags && p.tags.some(t => t.toLowerCase().includes(q)));
+            const matchesCategory = currentCategory === "Todos" || p.type === currentCategory;
+            return matchesSearch && matchesCategory;
         });
+        page = 1;
+        render();
+    }
 
-        document.getElementById("modalText").innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
-
-        const modalLink = document.getElementById("modalLink");
-        if (p.url) {
-            modalLink.href = p.url;
-            modalLink.style.display = "inline-block";
-        } else {
-            modalLink.style.display = "none";
-        }
-
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
-    };
-
-    const closeModal = () => {
-        if (modal) {
-            modal.classList.remove("active");
-            document.body.style.overflow = "auto";
-        }
-    };
-
-    modalClose?.addEventListener("click", closeModal);
-    modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-
-    // --- RENDERIZADO DE PROYECTOS ---
+    // --- RENDERIZADO ---
     function render() {
         if (!grid) return;
         grid.innerHTML = "";
@@ -104,10 +105,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         slice.forEach(p => {
             const card = document.createElement("div");
-            card.className = "card";
+            // Efecto Hover y Clase especial para Pinned
+            card.className = `card ${p.pinned ? 'pinned-card' : ''}`;
             card.onclick = () => openModal(p);
+
+            // Lazy loading en imágenes
             card.innerHTML = `
-                <img src="${p.cover || ''}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/400x220?text=Error'">
+                <img src="${p.cover || ''}" alt="${p.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x220?text=Error'">
                 <div class="card-body">
                     <div class="card-meta">${p.year} • ${p.type}</div>
                     <div class="card-title">${p.title}</div>
@@ -117,8 +121,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         if (pageInfo) pageInfo.textContent = `Página ${page} de ${totalPages}`;
-        if (prevBtn) prevBtn.disabled = (page <= 1);
-        if (nextBtn) nextBtn.disabled = (page >= totalPages);
+        prevBtn.disabled = (page <= 1);
+        nextBtn.disabled = (page >= totalPages);
     }
 
     // --- CARGA DE DATOS ---
@@ -127,7 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const res = await fetch("data/projects.json");
             projects = await res.json();
 
-            // Lógica de ordenamiento: Pinned primero, luego por Año
+            // Orden: Pinned primero, luego Año
             projects.sort((a, b) => {
                 if (a.pinned && !b.pinned) return -1;
                 if (!a.pinned && b.pinned) return 1;
@@ -135,34 +139,47 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 
             filtered = [...projects];
+            setupFilters();
             render();
-        } catch (e) {
-            console.error("Error cargando JSON", e);
-        }
+        } catch (e) { console.error("Error cargando JSON", e); }
     }
 
-    // --- EVENTOS ---
-    searchInput?.addEventListener("input", (e) => {
-        const q = e.target.value.toLowerCase();
-        filtered = projects.filter(p =>
-            p.title.toLowerCase().includes(q) ||
-            (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
-        );
-        page = 1;
-        render();
-    });
+    // --- MODAL & EVENTOS ---
+    openModal = function (p) {
+        document.getElementById("modalImg").src = p.cover || '';
+        document.getElementById("modalTitle").textContent = p.title || '';
+        document.getElementById("modalMeta").textContent = `${p.year} • ${p.type}`;
+        const modalTags = document.getElementById("modalTags");
+        modalTags.innerHTML = "";
+        (p.tags || []).forEach(t => {
+            const span = document.createElement("span");
+            span.className = "tag";
+            span.textContent = t;
+            modalTags.appendChild(span);
+        });
+        document.getElementById("modalText").innerHTML = Array.isArray(p.html) ? p.html.join('') : (p.html || "");
+        const modalLink = document.getElementById("modalLink");
+        modalLink.href = p.url || "#";
+        modalLink.style.display = p.url ? "inline-block" : "none";
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    };
 
+    const closeModal = () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+    };
+
+    modalClose?.addEventListener("click", closeModal);
+    modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    searchInput?.addEventListener("input", applyFilters);
     pageSizeSelect?.addEventListener("change", (e) => {
         pageSize = parseInt(e.target.value);
         page = 1;
         render();
     });
-
     prevBtn?.addEventListener("click", () => { if (page > 1) { page--; render(); } });
-    nextBtn?.addEventListener("click", () => {
-        const totalPages = Math.ceil(filtered.length / pageSize);
-        if (page < totalPages) { page++; render(); }
-    });
+    nextBtn?.addEventListener("click", () => { if ((page * pageSize) < filtered.length) { page++; render(); } });
 
     loadData();
 });
