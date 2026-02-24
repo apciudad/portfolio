@@ -209,3 +209,38 @@ window.addEventListener('DOMContentLoaded', () => {
 
     loadData();
 });
+
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(contactForm);
+
+        formStatus.textContent = "Enviando...";
+        formStatus.className = "form-status success"; // Estilo temporal
+        formStatus.style.display = "block";
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = "¡Gracias! Tu mensaje ha sido enviado con éxito.";
+                formStatus.className = "form-status success";
+                contactForm.reset();
+            } else {
+                const errorData = await response.json();
+                formStatus.textContent = "Oops! Hubo un problema enviando el formulario.";
+                formStatus.className = "form-status error";
+            }
+        } catch (error) {
+            formStatus.textContent = "Error de conexión. Inténtalo más tarde.";
+            formStatus.className = "form-status error";
+        }
+    });
+}

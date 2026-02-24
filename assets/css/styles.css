@@ -556,3 +556,82 @@ body {
         padding: 20px;
     }
 }
+
+/* Estilos para las sugerencias dentro del modal */
+.suggestions-section .card {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.suggestions-section .card:hover {
+    transform: translateY(-3px);
+    background: rgba(78, 161, 255, 0.05);
+}
+
+/* Asegurar que el modal se pueda scrollear si hay mucho contenido */
+.modal-body {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    /* Se activa con JS */
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(78, 255, 140, 0.1);
+    color: #4eff8c;
+    border: 1px solid rgba(78, 255, 140, 0.3);
+}
+
+.form-status.error {
+    display: block;
+    background: rgba(255, 78, 78, 0.1);
+    color: #ff4e4e;
+    border: 1px solid rgba(255, 78, 78, 0.3);
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
