@@ -254,7 +254,9 @@ body {
 }
 
 .cv-item {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    text-align: left;
+    /* Refuerza la alineación a la izquierda */
 }
 
 .cv-item h4 {
@@ -262,6 +264,8 @@ body {
     font-size: 1rem;
     margin-bottom: 5px;
 }
+
+
 
 .cv-meta {
     color: var(--muted);
@@ -286,11 +290,7 @@ body {
     font-weight: 700;
 }
 
-.cv-desc ul {
-    padding-left: 1.2rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-}
+
 
 /* --- MODAL (IMAGEN CORREGIDA) --- */
 .modal {
@@ -342,10 +342,20 @@ body {
 }
 
 .modal-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
     margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-tags span {
+    background: var(--chip-bg);
+    border: 1px solid rgba(78, 161, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .tag {
@@ -446,8 +456,22 @@ body {
     margin: 0 auto;
     padding: 40px 5%;
     display: flex;
+    flex-direction: row;
     gap: 30px;
     align-items: center;
+    justify-content: center;
+}
+
+.intro-text p {
+    margin: 0;
+    max-width: 520px;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.intro-text strong {
+    color: var(--accent);
 }
 
 .profile {
