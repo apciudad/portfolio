@@ -23,7 +23,7 @@
             <a href="#work">Proyectos</a>
             <a href="#services">Servicios</a>
             <a href="#cv">CV</a>
-            <a href="mailto:urbanistalepe@gmail.com">Contacto</a>
+            <a href="#contact">Contacto</a>
         </div>
     </nav>
 
@@ -85,11 +85,11 @@
                 <div class="service-card">
                     <div class="service-icon">📊</div>
                     <div class="service-content">
-                        <h3>Analítica Urbana & GIS</h3>
-                        <p>Análisis espacial avanzado para la toma de decisiones territoriales.</p>
+                        <h3>Inteligencia territorial</h3>
+                        <p>Análisis geoespacial avanzado para la toma de decisiones territoriales.</p>
                         <ul>
                             <li>Modelos de expansión urbana.</li>
-                            <li>Mapas de valores del suelo.</li>
+                            <li>Generación de mapas y portales cartográficos.</li>
                             <li>Infraestructura de Datos (IDE).</li>
                         </ul>
                     </div>
@@ -97,10 +97,10 @@
                 <div class="service-card">
                     <div class="service-icon">💻</div>
                     <div class="service-content">
-                        <h3>Ciencia de Datos Espaciales</h3>
-                        <p>Automatización y procesamiento de grandes volúmenes de datos urbanos.</p>
+                        <h3>Ciencia de Datos Geoespaciales</h3>
+                        <p>Automatización y procesamiento de grandes volúmenes de datos geoespaciales.</p>
                         <ul>
-                            <li>Modelos hedónicos con Python/R.</li>
+                            <li>Normalización de datos.</li>
                             <li>ETL de datos geográficos.</li>
                             <li>Dashboards interactivos.</li>
                         </ul>
@@ -112,8 +112,8 @@
                         <h3>Planeación Territorial</h3>
                         <p>Consultoría técnica para planes de desarrollo y ordenamiento.</p>
                         <ul>
-                            <li>Análisis de plusvalía social.</li>
-                            <li>Indicadores de habitabilidad.</li>
+                            <li>Análisis de plusvalía.</li>
+                            <li>Indicadores urbanos.</li>
                             <li>Diagnósticos de infraestructura.</li>
                         </ul>
                     </div>
@@ -121,29 +121,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <p>¿Tienes un proyecto en mente o alguna consulta sobre analítica urbana? Conversemos.</p>
-                    <p><strong>Email:</strong> urbanistalepe@gmail.com</p>
-                </div>
 
-                <form id="contactForm" action="https://formspree.io/f/mnjboyrn" method="POST" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="¿En qué puedo ayudarte?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Enviar mensaje</button>
-                    <div id="formStatus" class="form-status"></div>
-                </form>
-            </div>
-        </section>
 
         <section id="cv" class="cv-container">
             <div class="section-title">Curriculum Vitae</div>
@@ -211,6 +189,32 @@
             </div>
         </section>
 
+        <section id="contact" class="section">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>¿Tienes un proyecto en mente o alguna consulta sobre analítica urbana? Conversemos.</p>
+                    <p><strong>Email:</strong> urbanistalepe@gmail.com</p>
+                </div>
+
+                <form id="contactForm" action="https://formspree.io/f/mnjboyrn" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar mensaje</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </section>
+
+
+
         <div id="modal" class="modal" aria-hidden="true">
             <div class="modal-body">
                 <button id="modalClose" class="modal-close">×</button>
@@ -235,6 +239,30 @@
     </main>
 
     <script src="assets/js/app.js"></script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="name">Alejandro Lepe</span>
+                <span class="role">Urban Planner · GIS · City Science</span>
+            </div>
+            <div class="footer-links">
+                <a href="#work">Proyectos</a>
+                <a href="#services">Servicios</a>
+                <a href="#cv">CV</a>
+                <a href="mailto:urbanistalepe@gmail.com">Contacto</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alejandro Lepe. Todos los derechos reservados.</p>
+                <div class="social-mini">
+                    <a href="https://github.com/apciudad" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/tu-usuario" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
+
 
 </html>

@@ -677,3 +677,123 @@ body {
     background: var(--accent);
     border-radius: 10px;
 }
+
+/* Carrusel interno para entradas del Blog/Proyectos */
+.inner-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0 20px 0;
+    scroll-snap-type: x mandatory;
+    /* Efecto de imán al deslizar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+.inner-carousel img {
+    flex: 0 0 85%;
+    /* Muestra el 85% de la imagen para dar pista de que hay más */
+    scroll-snap-align: center;
+    border-radius: 12px;
+    object-fit: cover;
+    height: 300px;
+    /* Altura fija para mantener uniformidad */
+    border: 1px solid var(--border);
+}
+
+/* Estilo de la barra de scroll para Chrome/Safari */
+.inner-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.inner-carousel::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background: rgba(5, 10, 18, 0.8);
+    border-top: 1px solid var(--border);
+    padding: 60px 5% 40px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+.footer-brand .name {
+    display: block;
+    font-family: Raleway, sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.footer-brand .role {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.social-mini {
+    display: flex;
+    gap: 20px;
+}
+
+.social-mini a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-mini a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

@@ -18,7 +18,7 @@
         "id": "presentacion-alejandrolepe",
         "pinned": true,
         "title": "Presentación Alejandro Lepe",
-        "year": "2025",
+        "year": "2026",
         "type": "Presentación",
         "tags": [
             "AI",
@@ -27,7 +27,7 @@
         "cover": "assets/img/projects/lepe.jpg",
         "url": "",
         "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
+            "<iframe width='650' height='360' src='https://www.youtube.com/embed/hMQERhMnB78?si=qFRj18EHh7tk2sKX' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>"
         ]
     },
     {
@@ -107,70 +107,6 @@
         ]
     },
     {
-        "id": "expansion-urbana-20244",
-        "pinned": false,
-        "title": "Expansión urbana",
-        "year": "2025",
-        "type": "Proyecto",
-        "tags": [
-            "AI",
-            "City Science"
-        ],
-        "cover": "assets/img/projects/projecto-7.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
-    },
-    {
-        "id": "expansion-urbana-20283",
-        "pinned": false,
-        "title": "Expansión urbana",
-        "year": "2025",
-        "type": "Proyecto",
-        "tags": [
-            "AI",
-            "City Science"
-        ],
-        "cover": "assets/img/projects/projecto-7.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
-    },
-    {
-        "id": "expansion-urbana-2028",
-        "pinned": false,
-        "title": "Expansión urbana",
-        "year": "2025",
-        "type": "Proyecto",
-        "tags": [
-            "AI",
-            "City Science"
-        ],
-        "cover": "assets/img/projects/projecto-7.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
-    },
-    {
-        "id": "expansion-urbana-2024",
-        "pinned": false,
-        "title": "Expansión urbana",
-        "year": "2025",
-        "type": "Proyecto",
-        "tags": [
-            "AI",
-            "City Science"
-        ],
-        "cover": "assets/img/projects/projecto-7.jpg",
-        "url": "https://github.com/apciudad/demo",
-        "html": [
-            "<p>Demostración del sistema de agentes urbanos.</p><div class='video-wrapper'> <iframe src='https://www.youtube.com/embed/hMQERhMnB78' title='Demo'frameborder='0' // allowfullscreen> </iframe> </div>"
-        ]
-    },
-    {
         "id": "participacion-activa-valor",
         "pinned": true,
         "title": "Manifiesto urbano Parte 1 - La participación activa y su valor en la ciudad",
@@ -204,7 +140,13 @@
             "<figure style='margin: 20px 0; text-align: center;'>",
             "<img src='assets/img/projects/proyecto-participacion.jpg' style='width: 100%; border-radius: 12px; border: 1px solid var(--border);'>",
             "<figcaption style='color: var(--muted); font-size: 0.8rem; margin-top: 10px;'>Pie de foto: Talleres participativos en la comunidad. Elaborado con IA</figcaption>",
-            "</figure>"
+            "</figure>",
+            "<div class='inner-carousel'>",
+            "<img src='assets/img/projects/proyecto-1.jpg' alt='Imagen 1'>",
+            "<img src='assets/img/projects/proyecto-2.jpg' alt='Imagen 2'>",
+            "<img src='assets/img/projects/proyecto-3.jpg' alt='Imagen 3'>",
+            "<img src='assets/img/projects/proyecto-4.jpg' alt='Imagen 4'>",
+            "</div>"
         ]
     }
 ]
