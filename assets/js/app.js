@@ -256,3 +256,22 @@ if (contactForm) {
         }
     });
 }
+
+// --- LÓGICA BOTÓN IR ARRIBA ---
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    // Si el usuario baja más de 400px, muestra el botón
+    if (window.scrollY > 400) {
+        backToTopBtn.classList.add("show");
+    } else {
+        backToTopBtn.classList.remove("show");
+    }
+});
+
+backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Desplazamiento suave
+    });
+});
