@@ -4,9 +4,11 @@
     --text: #eaf1ff;
     --muted: #a7b6d6;
     --border: rgba(255, 255, 255, .10);
-    --accent: #4ea1ff;
-    --accent2: #2f6fff;
+    --accent: #0e53d4;
+    --accent2: #ffffff;
     --chip-bg: rgba(78, 161, 255, .12);
+    --link-color: #6abcd5;
+    /* Azul brillante para legibilidad */
 }
 
 * {
@@ -19,6 +21,18 @@ body {
     background: radial-gradient(1200px 700px at 20% 0%, #13254a 0%, var(--bg) 55%);
     color: var(--text);
     line-height: 1.5;
+}
+
+/* --- ENLACES GENERALES --- */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--accent2);
+    text-decoration: underline;
 }
 
 /* --- NAVEGACIÓN --- */
@@ -58,12 +72,12 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     color: var(--muted);
-    text-decoration: none;
-    transition: 0.3s;
+    /* En el menú los mantenemos muted hasta el hover */
 }
 
 .links a:hover {
     color: var(--accent);
+    text-decoration: none;
 }
 
 /* --- CARRUSEL --- */
@@ -158,8 +172,10 @@ body {
 .filter-btn.active,
 .filter-btn:hover {
     background: var(--accent);
-    color: white;
+    color: var(--bg);
+    /* Texto oscuro sobre botón claro */
     border-color: var(--accent);
+    font-weight: bold;
 }
 
 /* --- GRID DE PROYECTOS --- */
@@ -256,7 +272,6 @@ body {
 .cv-item {
     margin-bottom: 20px;
     text-align: left;
-    /* Refuerza la alineación a la izquierda */
 }
 
 .cv-item h4 {
@@ -264,8 +279,6 @@ body {
     font-size: 1rem;
     margin-bottom: 5px;
 }
-
-
 
 .cv-meta {
     color: var(--muted);
@@ -290,9 +303,7 @@ body {
     font-weight: 700;
 }
 
-
-
-/* --- MODAL (IMAGEN CORREGIDA) --- */
+/* --- MODAL --- */
 .modal {
     position: fixed;
     inset: 0;
@@ -320,11 +331,9 @@ body {
     position: relative;
 }
 
-/* Ajuste de altura de imagen de entrada */
 .modal-img {
     width: 100%;
     height: 350px;
-    /* Altura controlada para que no sea gigante */
     object-fit: cover;
     display: block;
 }
@@ -358,14 +367,6 @@ body {
     font-weight: 600;
 }
 
-.tag {
-    background: var(--chip-bg);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-}
-
 .modal-close {
     position: absolute;
     top: 15px;
@@ -384,12 +385,14 @@ body {
 .btn {
     display: inline-block;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    padding: 10px 25px;
+    color: var(--bg) !important;
+    /* FORZAMOS COLOR OSCURO PARA LEER SOBRE BOTÓN BLANCO */
+    padding: 12px 30px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     margin-top: 20px;
+    border: none;
 }
 
 /* --- OTROS --- */
@@ -497,7 +500,15 @@ body {
         height: 250px;
     }
 
-    /* Más pequeña en móviles */
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 /* --- SECCIÓN SERVICIOS --- */
@@ -569,19 +580,12 @@ body {
 
 .service-content ul li::before {
     content: "→";
-    color: var(--accent);
+    color: var(--link-color);
     margin-right: 8px;
     font-weight: bold;
 }
 
-/* Ajuste para móviles */
-@media (max-width: 480px) {
-    .service-card {
-        padding: 20px;
-    }
-}
-
-/* Estilos para las sugerencias dentro del modal */
+/* --- SUGERENCIAS --- */
 .suggestions-section .card {
     background: rgba(255, 255, 255, 0.02);
 }
@@ -591,13 +595,7 @@ body {
     background: rgba(78, 161, 255, 0.05);
 }
 
-/* Asegurar que el modal se pueda scrollear si hay mucho contenido */
-.modal-body {
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-/* --- SECCIÓN CONTACTO --- */
+/* --- CONTACTO --- */
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -621,94 +619,12 @@ body {
     border-radius: 8px;
     color: var(--text);
     font-family: inherit;
-    transition: 0.3s;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.form-status {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    padding: 10px;
-    border-radius: 8px;
-    display: none;
-    /* Se activa con JS */
-}
-
-.form-status.success {
-    display: block;
-    background: rgba(78, 255, 140, 0.1);
-    color: #4eff8c;
-    border: 1px solid rgba(78, 255, 140, 0.3);
-}
-
-.form-status.error {
-    display: block;
-    background: rgba(255, 78, 78, 0.1);
-    color: #ff4e4e;
-    border: 1px solid rgba(255, 78, 78, 0.3);
-}
-
-@media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Estilo para imágenes dentro del modal de Blog */
-.modal-text img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-}
-
-/* Ocultar barra de scroll en mini-carrusel pero permitir el movimiento */
-.mini-carousel::-webkit-scrollbar {
-    height: 6px;
-}
-
-.mini-carousel::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 10px;
-}
-
-/* Carrusel interno para entradas del Blog/Proyectos */
-.inner-carousel {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding: 10px 0 20px 0;
-    scroll-snap-type: x mandatory;
-    /* Efecto de imán al deslizar */
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
-}
-
-.inner-carousel img {
-    flex: 0 0 85%;
-    /* Muestra el 85% de la imagen para dar pista de que hay más */
-    scroll-snap-align: center;
-    border-radius: 12px;
-    object-fit: cover;
-    height: 300px;
-    /* Altura fija para mantener uniformidad */
-    border: 1px solid var(--border);
-}
-
-/* Estilo de la barra de scroll para Chrome/Safari */
-.inner-carousel::-webkit-scrollbar {
-    height: 6px;
-}
-
-.inner-carousel::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 10px;
+    border-color: var(--link-color);
 }
 
 /* --- FOOTER --- */
@@ -726,20 +642,12 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    text-align: center;
 }
 
 .footer-brand .name {
-    display: block;
     font-family: Raleway, sans-serif;
     font-weight: 800;
     font-size: 1.4rem;
-    letter-spacing: 1px;
-}
-
-.footer-brand .role {
-    color: var(--muted);
-    font-size: 0.9rem;
 }
 
 .footer-links {
@@ -748,16 +656,13 @@ body {
 }
 
 .footer-links a {
-    text-decoration: none;
-    color: var(--text);
+    color: var(--muted);
     font-size: 0.85rem;
     font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.3s;
 }
 
 .footer-links a:hover {
-    color: var(--accent);
+    color: var(--link-color);
 }
 
 .footer-bottom {
@@ -776,26 +681,8 @@ body {
     gap: 20px;
 }
 
-.social-mini a {
-    color: var(--muted);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
 .social-mini a:hover {
-    color: var(--accent);
-}
-
-@media (max-width: 768px) {
-    .footer-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
-    }
+    color: var(--link-color);
 }
 
 /* --- BOTÓN IR ARRIBA --- */
@@ -806,7 +693,8 @@ body {
     width: 45px;
     height: 45px;
     background: var(--accent);
-    color: white;
+    color: var(--bg);
+    /* Flecha oscura sobre fondo blanco */
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -815,11 +703,9 @@ body {
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    /* Oculto inicialmente */
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     z-index: 1000;
 }
 
@@ -828,7 +714,19 @@ body {
     visibility: visible;
 }
 
-.back-to-top:hover {
-    transform: translateY(-5px);
-    background: var(--accent2);
+/* Carrusel interno */
+.inner-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.inner-carousel img {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    height: 300px;
+    object-fit: cover;
 }
