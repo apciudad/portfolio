@@ -13,10 +13,11 @@
             "Buffer Adaptativo",
             "Planeación Urbana"
         ],
-        "cover": "assets/img/projects/proyecto-2.jpg",
+        "cover": "assets/img/projects/plugin_qgis_radiusbycapacity.png",
         "url": "",
         "html": [
             "<p><strong>Autores:</strong> Alejandro Padilla Lepe, Xabier Bastida<br><strong>Entorno de desarrollo:</strong> PyQGIS 3.x / QGIS Processing API<br><strong>Versión del documento:</strong> 1.0 (Julio 2026)</p>",
+            "<figure style='margin: 20px 0; text-align: center;'><img src='assets/img/projects/plugin_qgis_radiusbycapacity.png' style='width: 100%; border-radius: 12px; border: 1px solid var(--border);' alt='Interfaz del Plugin QGIS Adaptive Capacity Buffer'><figcaption style='color: var(--muted); font-size: 0.8rem; margin-top: 10px;'>Interfaz y parámetros del plugin Adaptive Capacity Buffer en QGIS Processing Toolbox</figcaption></figure>",
             "<h3>1. Contexto Teórico y Justificación Urbana</h3>",
             "<p>El análisis espacial tradicional sobre la cobertura de equipamientos públicos (educación, salud, parques, transporte) se ha basado históricamente en áreas de influencia definidas mediante buffers euclidianos (distancia fija) o isócronas fijas de tiempo de recorrido. Aunque estos métodos ofrecen una aproximación geométrica preliminar, sufren una falla conceptual grave: <em>asumen una capacidad de servicio infinita</em>.</p>",
             "<p>En la práctica moderna de la planeación urbana y la ciencia de la ciudad (City Science), la cobertura real de un servicio depende no solo de la proximidad espacial, sino de la relación dinámica entre la capacidad de oferta del equipamiento (p. ej., cupos escolares, camas hospitalarias, capacidad de atención) y la densidad de demanda circundante (p. ej., concentración de población por manzana o celda de índice espacial H3).</p>",
