@@ -2,7 +2,7 @@
     {
         "id": "analisis-cafeterias-amg-2026",
         "pinned": true,
-        "title": "Análisis Urbano y Digital de la Oferta de Cafeterías en el AMG",
+        "title": "Análisis de la Oferta de Cafeterías en el AMG",
         "year": "2026",
         "type": "Investigación",
         "tags": [
@@ -13,7 +13,7 @@
             "Google Places API",
             "Dashboard"
         ],
-        "cover": "assets/img/projects/proyecto-3.jpg",
+        "cover": "assets/img/projects/proyecto-análisis_cafeterias.png",
         "url": "assets/projects/coffee_amg/dashboard_cafes_amg.html",
         "html": [
             "<p><strong>Elaborado por:</strong> @urbanistalepe<br><strong>Fecha:</strong> Julio 2026<br><strong>Universo analizado:</strong> 3,385 cafeterías georreferenciadas (Guadalajara, Zapopan, Tlaquepaque y Tonalá)<br><strong>Fuente de datos:</strong> Google Places API (Places API v1 / Nearby Search)</p>",
