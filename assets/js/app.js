@@ -26,43 +26,116 @@ window.addEventListener('DOMContentLoaded', () => {
     let pageSize = 12;
     let currentCategory = "Todos";
 
-    // --- LÓGICA DEL CARRUSEL ---
-    let currentSlide = 0;
-    const carouselTrack = document.querySelector(".carousel-slide");
-    const slides = document.querySelectorAll(".carousel-slide img");
+    // --- LÓGICA DEL CARRUSEL HORIZONTAL TILES (pmndrs style) ---
+    const tilesViewport = document.getElementById("tilesViewport");
+    const tilesTrack = document.getElementById("tilesTrack");
+    const tilesMinimap = document.getElementById("tilesMinimap");
 
-    // Generar Dots dinámicamente
-    slides.forEach((_, idx) => {
-        const dot = document.createElement("div");
-        dot.className = `dot ${idx === 0 ? 'active' : ''}`;
-        dot.onclick = () => setSlide(idx);
-        dotsContainer.appendChild(dot);
-    });
+    const sampleImages = [
+        { img: "assets/img/projects/proyecto-6-1.jpg", title: "Valuación Masiva & Plusvalía", cat: "GIS · Analítica" },
+        { img: "assets/img/projects/proyecto-2.jpg", title: "Modelos de Expansión Urbana", cat: "Ciencia de la Ciudad" },
+        { img: "assets/img/projects/proyecto-3.jpg", title: "Infraestructura de Datos", cat: "GeoData" },
+        { img: "assets/img/projects/proyecto-4.jpg", title: "Cartografía Digital & Territorio", cat: "GIS" },
+        { img: "assets/img/projects/proyecto-5.jpg", title: "Análisis de Suelo Metropolitano", cat: "Urbanismo" },
+        { img: "assets/img/projects/proyecto-6.jpg", title: "Redes Urbanas & Movilidad", cat: "Analítica" },
+        { img: "assets/img/projects/proyecto-2.jpg", title: "Zonificación & Captura de Valor", cat: "Planificación" },
+        { img: "assets/img/projects/proyecto-3.jpg", title: "Monitoreo Geoespacial", cat: "GIS" }
+    ];
 
-    const updateDots = () => {
-        const dots = document.querySelectorAll(".dot");
-        dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
-    };
+    let activeTileIndex = null;
 
-    setSlide = function (index) {
-        currentSlide = index;
-        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        updateDots();
-    };
+    function initHorizontalTiles() {
+        if (!tilesTrack || !tilesMinimap) return;
+        tilesTrack.innerHTML = "";
+        tilesMinimap.innerHTML = "";
 
-    moveSlide = function (step) {
-        currentSlide = (currentSlide + step + slides.length) % slides.length;
-        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        updateDots();
-    };
+        sampleImages.forEach((item, index) => {
+            // Tile item
+            const tile = document.createElement("div");
+            tile.className = "tile-item";
+            tile.dataset.index = index;
+            tile.innerHTML = `
+                <img src="${item.img}" alt="${item.title}" loading="lazy">
+                <div class="tile-overlay">
+                    <div class="tile-category">${item.cat}</div>
+                    <div class="tile-title">${item.title}</div>
+                </div>
+            `;
 
-    let autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+            tile.addEventListener("click", () => {
+                if (activeTileIndex === index) {
+                    activeTileIndex = null;
+                    tile.classList.remove("active");
+                } else {
+                    document.querySelectorAll(".tile-item").forEach(t => t.classList.remove("active"));
+                    activeTileIndex = index;
+                    tile.classList.add("active");
+                    
+                    // Centrar tile seleccionado
+                    const scrollPos = tile.offsetLeft - (tilesViewport.clientWidth / 2) + (tile.clientWidth / 2);
+                    tilesViewport.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                }
+                updateMinimap();
+            });
 
-    const carouselContainer = document.querySelector(".carousel-container");
-    carouselContainer?.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
-    carouselContainer?.addEventListener("mouseleave", () => {
-        autoSlideInterval = setInterval(() => moveSlide(1), 5000);
-    });
+            tilesTrack.appendChild(tile);
+
+            // Minimap bar
+            const bar = document.createElement("div");
+            bar.className = "minimap-bar";
+            bar.addEventListener("click", () => {
+                const targetTile = tilesTrack.children[index];
+                targetTile.click();
+            });
+            tilesMinimap.appendChild(bar);
+        });
+
+        updateMinimap();
+    }
+
+    function updateMinimap() {
+        if (!tilesViewport || !tilesMinimap) return;
+        const scrollPercent = tilesViewport.scrollLeft / (tilesViewport.scrollWidth - tilesViewport.clientWidth || 1);
+        const bars = tilesMinimap.children;
+        const total = bars.length;
+        if (!total) return;
+
+        const activeIndex = Math.min(Math.floor(scrollPercent * total), total - 1);
+
+        Array.from(bars).forEach((bar, i) => {
+            if (activeTileIndex !== null) {
+                bar.classList.toggle("active", i === activeTileIndex);
+            } else {
+                bar.classList.toggle("active", i === activeIndex);
+            }
+        });
+    }
+
+    // Drag-to-scroll functionality for viewport
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    if (tilesViewport) {
+        tilesViewport.addEventListener("scroll", () => updateMinimap());
+
+        tilesViewport.addEventListener("mousedown", (e) => {
+            isDown = true;
+            startX = e.pageX - tilesViewport.offsetLeft;
+            scrollLeft = tilesViewport.scrollLeft;
+        });
+        tilesViewport.addEventListener("mouseleave", () => { isDown = false; });
+        tilesViewport.addEventListener("mouseup", () => { isDown = false; });
+        tilesViewport.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - tilesViewport.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            tilesViewport.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    initHorizontalTiles();
 
     // --- FILTROS RÁPIDOS (Categorías) ---
     function setupFilters() {

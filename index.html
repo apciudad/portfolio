@@ -36,18 +36,22 @@
         <img class="profile" src="assets/img/profile.png" alt="Foto de Alejandro Lepe" />
     </header>
 
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <img src="assets/img/projects/proyecto-6-1.jpg" alt="Foto 1" loading="lazy">
-            <img src="assets/img/projects/proyecto-2.jpg" alt="Foto 2" loading="lazy">
-            <img src="assets/img/projects/proyecto-3.jpg" alt="Foto 3" loading="lazy">
-            <img src="assets/img/projects/proyecto-4.jpg" alt="Foto 4" loading="lazy">
-            <img src="assets/img/projects/proyecto-5.jpg" alt="Foto 5" loading="lazy">
-            <img src="assets/img/projects/proyecto-6.jpg" alt="Foto 6" loading="lazy">
+    <!-- Carrusel Horizontal Tiles (pmndrs style) -->
+    <div class="horizontal-tiles-section" id="horizontalTilesContainer">
+        <div class="tiles-header">
+            <span class="tiles-badge">DESTACADOS</span>
+            <span class="tiles-hint">Desliza o arrastra para explorar &bull; Haz clic en una imagen para ampliar</span>
         </div>
-        <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="carousel-next" onclick="moveSlide(1)">&#10095;</button>
+        
+        <div class="tiles-viewport" id="tilesViewport">
+            <div class="tiles-track" id="tilesTrack">
+                <!-- Se llenará dinámicamente desde JS o proyectos -->
+            </div>
+        </div>
+
+        <div class="tiles-minimap-container">
+            <div class="tiles-minimap" id="tilesMinimap"></div>
+        </div>
     </div>
 
     <main>
@@ -171,26 +175,6 @@
                                     rel="noopener">Premio CORE 2018 - Componente Central</a></li>
                         </ul>
                     </div>
-                    <h3>Publicaciones</h3>
-                    <div class="cv-item">
-                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
-                            <li><a href="https://archive.org/details/dreme-g-210301-arriaga-munguia-y-lepe-2021-contribuye-airbnb-a-elevar-el-costo-d"
-                                    target="_blank" rel="noopener">Contribuye Airbnb a elevar el costo de la vivienda en
-                                    Guadalajara? - Revista de Estudios Metropolitanos</a></li>
-                        </ul>
-                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
-                            <li>Caracterización Social y de Entorno Urbano en Asentamientos Irregulares en Situación de
-                                Pobreza - IMEPLAN</li>
-                        </ul>
-                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
-                            <li>Objetivos de Desarrollo Sostenible: Experiencias desde lo Local. Tlajomulco en el
-                                Contexto
-                                del Área Metropolitana de Guadalajara - Tomo IV. Gobernanza de la ciudad, La diversidad
-                                urbana como componente en la medición cuantitativa del objetivo de desarrollo
-                                sostenible para las ciudades - Universidad de Guadalajara</li>
-                        </ul>
-
-                    </div>
                 </div>
                 <div class="cv-column">
                     <h3>Ruta profesional</h3>
@@ -242,6 +226,26 @@
                                 <li>Infraestructura de datos espaciales (PostGIS/GeoServer).</li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div class="cv-column">
+                    <h3>Publicaciones</h3>
+                    <div class="cv-item">
+                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem; margin-bottom: 12px;">
+                            <li><a href="https://archive.org/details/dreme-g-210301-arriaga-munguia-y-lepe-2021-contribuye-airbnb-a-elevar-el-costo-d"
+                                    target="_blank" rel="noopener">Contribuye Airbnb a elevar el costo de la vivienda en
+                                    Guadalajara? - Revista de Estudios Metropolitanos</a></li>
+                        </ul>
+                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem; margin-bottom: 12px;">
+                            <li>Caracterización Social y de Entorno Urbano en Asentamientos Irregulares en Situación de
+                                Pobreza - IMEPLAN</li>
+                        </ul>
+                        <ul style="padding-left: 1rem; margin:0; font-size:0.95rem;">
+                            <li>Objetivos de Desarrollo Sostenible: Experiencias desde lo Local. Tlajomulco en el
+                                Contexto del Área Metropolitana de Guadalajara - Tomo IV. Gobernanza de la ciudad, La diversidad
+                                urbana como componente en la medición cuantitativa del objetivo de desarrollo
+                                sostenible para las ciudades - Universidad de Guadalajara</li>
+                        </ul>
                     </div>
                 </div>
             </div>
