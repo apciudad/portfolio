@@ -147,14 +147,14 @@ a:hover {
 
 .tile-item {
     position: relative;
-    height: 460px;
-    width: 260px;
+    height: 420px;
+    width: 300px;
     flex-shrink: 0;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-    filter: grayscale(85%) opacity(0.7);
+    filter: grayscale(15%) opacity(0.92);
     background: #0f1b33;
     border: 1px solid var(--border);
 }
@@ -166,7 +166,7 @@ a:hover {
 }
 
 .tile-item.active {
-    width: 680px;
+    width: 620px;
     filter: grayscale(0%) opacity(1);
     border-color: var(--link-color);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(14, 83, 212, 0.45);
@@ -191,16 +191,19 @@ a:hover {
     left: 0;
     right: 0;
     background: linear-gradient(0deg, rgba(11, 18, 32, 0.95) 0%, rgba(11, 18, 32, 0.6) 60%, transparent 100%);
-    padding: 16px;
-    opacity: 0;
-    transform: translateY(10px);
+    padding: 18px;
+    opacity: 0.95;
+    transform: translateY(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .tile-item:hover .tile-overlay,
 .tile-item.active .tile-overlay {
     opacity: 1;
+<<<<<<< Updated upstream
     transform: translateY(0);
+=======
+>>>>>>> Stashed changes
 }
 
 .tile-title {

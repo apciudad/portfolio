@@ -91,6 +91,13 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         updateMinimap();
+
+        // Activar el primer tile por defecto para mejor presentación
+        if (tilesTrack.children.length > 0) {
+            activeTileIndex = 0;
+            tilesTrack.children[0].classList.add("active");
+            updateMinimap();
+        }
     }
 
     function updateMinimap() {
@@ -272,13 +279,17 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
+        if (modal) {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
     };
 
     const closeModal = () => {
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
+        if (modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
     };
 
     modalClose?.addEventListener("click", closeModal);
@@ -333,18 +344,19 @@ if (contactForm) {
 // --- LÓGICA BOTÓN IR ARRIBA ---
 const backToTopBtn = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-    // Si el usuario baja más de 400px, muestra el botón
-    if (window.scrollY > 400) {
-        backToTopBtn.classList.add("show");
-    } else {
-        backToTopBtn.classList.remove("show");
-    }
-});
-
-backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" // Desplazamiento suave
+if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
     });
-});
+
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
