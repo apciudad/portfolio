@@ -1,5 +1,47 @@
 [
     {
+        "id": "monopolio-oferta-inmobiliaria-amg",
+        "pinned": true,
+        "title": "Monopolio: Visualizador de Oferta Inmobiliaria en el AMG",
+        "year": "2026",
+        "type": "Investigación",
+        "tags": [
+            "GIS",
+            "Urban Analytics",
+            "Mercado Inmobiliario",
+            "AMG",
+            "Leaflet",
+            "Dashboard",
+            "City Science"
+        ],
+        "cover": "assets/img/projects/proyecto-análisis_cafeterias.png",
+        "url": "assets/projects/inmobiliario/index.html",
+        "html": [
+            "<p><strong>Elaborado por:</strong> @urbanistalepe<br><strong>Fecha:</strong> Agosto 2026<br><strong>Universo analizado:</strong> Propiedades inmobiliarias georreferenciadas en el Área Metropolitana de Guadalajara (Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco)<br><strong>Fuente de datos:</strong> Captura de oferta inmobiliaria en línea y geoprocesamiento espacial</p>",
+            "<div style='margin: 20px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #0F172A;'>",
+            "  <div style='padding: 10px 15px; background: #1E293B; color: #F8FAFC; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155;'>",
+            "    <span>Visualizador Interactivo de Oferta Inmobiliaria Monopolio AMG</span>",
+            "    <a href='assets/projects/inmobiliario/index.html' target='_blank' style='color: #38BDF8; text-decoration: none; font-size: 0.85rem;'>Pantalla Completa</a>",
+            "  </div>",
+            "  <iframe src='assets/projects/inmobiliario/index.html' style='width: 100%; height: 500px; border: none;'></iframe>",
+            "</div>",
+            "<h3>Síntesis del Proyecto</h3>",
+            "<p>Este proyecto analiza la estructura de precios, distribución espacial y tipología de la oferta de vivienda en el Área Metropolitana de Guadalajara (AMG). A través de una plataforma interactiva con capacidad de filtrado multivariado y delimitación poligonal en tiempo real mediante Turf.js y Leaflet Draw, se exploran los patrones de precio total, valor unitario por metro cuadrado ($/m²) y densidad tipológica (casas vs. departamentos).</p>",
+            "<h3>Principales Hallazgos</h3>",
+            "<ul>",
+            "<li><strong>Segregación espacial del precio por m²:</strong> Se identifica una acentuada brecha territorial en el costo unitario de la vivienda. Las zonas consolidadas y verticales de Zapopan (Puerta de Hierro, Providencia, Royal Country) registran valores unitarios significativos por m², mientras que los corredores periféricos muestran menores valores unitarios pero con mayores metrajes de construcción.</li>",
+            "<li><strong>Tipología y verticalización:</strong> La oferta de departamentos domina las zonas de mayor valor de suelo y centralidad urbana, reflejando el proceso de densificación y reestructuración inmobiliaria en los ejes de transporte y comercio principal.</li>",
+            "<li><strong>Patrón de distribución de precios totales:</strong> Las propiedades de mayor rango de precio absoluto se concentran en los municipios de Zapopan y Guadalajara centro-poniente, creando polígonos homogéneos de alta plusvalía en comparación con la zona sur y oriente de la metrópoli.</li>",
+            "</ul>",
+            "<h3>Funcionalidades Técnicas Desarrolladas</h3>",
+            "<ul>",
+            "<li><strong>Filtro poligonal interactivo (Turf.js + Leaflet Draw):</strong> Herramienta de dibujo espacial en mapa que permite delimitar áreas de interés personalizadas y recalcular indicadores en tiempo real.</li>",
+            "<li><strong>Controles dinámicos de rango:</strong> Sliders dobles para filtrado continuo de precio total y precio por metro cuadrado.</li>",
+            "<li><strong>Indicadores KPI en tiempo real:</strong> Métricas agregadas de total de inmuebles en vista, precio promedio y valor unitario promedio por metro cuadrado.</li>",
+            "</ul>"
+        ]
+    },
+    {
         "id": "analisis-cafeterias-amg-2026",
         "pinned": true,
         "title": "Análisis de la Oferta de Cafeterías en el AMG",

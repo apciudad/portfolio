@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monopolio | Oferta Inmobiliaria AMG</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- Leaflet Draw CSS & JS for Spatial Polygon Drawing -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+  <!-- Turf.js for Spatial Analysis (Point in Polygon) -->
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+  <!-- noUiSlider Dual Range Sliders -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div id="app-container">
+    
+    <!-- Sidebar Control & Listings Panel -->
+    <aside id="sidebar">
+      
+      <!-- Brand Header -->
+      <div class="brand-header">
+        <div class="brand-title">
+          <div class="brand-icon">M</div>
+          <div class="brand-text">
+            <h1>Monopolio AMG</h1>
+            <p>Visualizador de Oferta Inmobiliaria</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Row -->
+      <div class="kpi-container">
+        <div class="kpi-card">
+          <div class="kpi-value" id="kpi-total">0</div>
+          <div class="kpi-label">Propiedades</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value green" id="kpi-avg-price">$0</div>
+          <div class="kpi-label">Precio Prom.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value amber" id="kpi-avg-m2">$0</div>
+          <div class="kpi-label">Prom. $/m²</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Filters -->
+      <div class="filters-section">
+        
+        <!-- Spatial Filter Indicator -->
+        <div id="spatial-filter-badge" class="spatial-badge hidden">
+          <span>📐 Filtro por zona activo</span>
+          <button id="btn-clear-draw" class="btn-clear-draw">Limpiar zona</button>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="filter-group">
+          <div class="filter-label">Tipo de Propiedad</div>
+          <div class="type-buttons">
+            <button class="btn-toggle active" data-type="all">Todos</button>
+            <button class="btn-toggle" data-type="house">Casas</button>
+            <button class="btn-toggle" data-type="apartment">Deptos</button>
+          </div>
+        </div>
+
+        <!-- Dual Range Slider: Precio Total -->
+        <div class="filter-group">
+          <div class="filter-label">
+            <span>Precio Total</span>
+            <span class="filter-value-display" id="price-range-val">$0 - Sin límite</span>
+          </div>
+          <div id="slider-price" class="dual-slider"></div>
+        </div>
+
+        <!-- Dual Range Slider: Precio por m² -->
+        <div class="filter-group">
+          <div class="filter-label">
+            <span>Precio por m²</span>
+            <span class="filter-value-display" id="price-m2-range-val">$0 - Sin límite</span>
+          </div>
+          <div id="slider-price-m2" class="dual-slider"></div>
+        </div>
+
+        <!-- Bedrooms Selector -->
+        <div class="filter-group">
+          <div class="filter-label">Recámaras</div>
+          <select id="filter-bedrooms" class="input-styled">
+            <option value="all">Cualquiera</option>
+            <option value="1">1 Recámara</option>
+            <option value="2">2 Recámaras</option>
+            <option value="3">3 Recámaras</option>
+            <option value="4+">4+ Recámaras</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Listings Header -->
+      <div class="listings-header">
+        <span id="results-count">Cargando propiedades...</span>
+      </div>
+
+      <!-- Scrollable Listings Feed -->
+      <div id="listings-container" class="listings-list">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </aside>
+
+    <!-- Map Viewport -->
+    <main id="map-container">
+      <div id="map"></div>
+    </main>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <div class="modal-gallery">
+        <img id="modal-img" src="" alt="Property detail">
+      </div>
+      <div class="modal-body">
+        <div class="modal-title-row">
+          <div>
+            <div class="modal-price" id="modal-price">$0 MXN</div>
+            <div class="modal-price-m2" id="modal-price-m2">$0 MXN / m²</div>
+          </div>
+          <span id="modal-type" style="background: rgba(56, 189, 248, 0.2); color: var(--accent-blue); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Casa</span>
+        </div>
+
+        <p id="modal-address" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;"></p>
+
+        <div class="modal-grid-specs">
+          <div class="modal-spec-box">
+            <div class="val" id="modal-bedrooms">-</div>
+            <div class="lbl">Recámaras</div>
+          </div>
+          <div class="modal-spec-box">
+            <div class="val" id="modal-bathrooms">-</div>
+            <div class="lbl">Baños</div>
+          </div>
+          <div class="modal-spec-box">
+            <div class="val" id="modal-const-m2">-</div>
+            <div class="lbl">Construcción</div>
+          </div>
+          <div class="modal-spec-box">
+            <div class="val" id="modal-terr-m2">-</div>
+            <div class="lbl">Terreno</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
