@@ -339,6 +339,25 @@ function setupEventListeners() {
     });
   });
 
+  // Sidebar Toggle / Collapse Listeners
+  const sidebar = document.getElementById('sidebar');
+  const btnToggleSidebar = document.getElementById('btn-toggle-sidebar');
+  const btnShowSidebar = document.getElementById('btn-show-sidebar');
+
+  if (btnToggleSidebar && sidebar && btnShowSidebar) {
+    btnToggleSidebar.addEventListener('click', () => {
+      sidebar.classList.add('collapsed');
+      btnShowSidebar.classList.remove('hidden');
+      setTimeout(() => { map.invalidateSize(); }, 360);
+    });
+
+    btnShowSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('collapsed');
+      btnShowSidebar.classList.add('hidden');
+      setTimeout(() => { map.invalidateSize(); }, 360);
+    });
+  }
+
   // Clear drawn area filter button listener
   document.getElementById('btn-clear-draw').addEventListener('click', () => {
     drawnItems.clearLayers();
