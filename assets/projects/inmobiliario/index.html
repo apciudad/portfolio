@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monopolio | Oferta Inmobiliaria AMG</title>
+  <title>Valuametric | Visor de Oferta Inmobiliaria AMG</title>
+  
+  <!-- SEO & OpenGraph Meta Tags for Link Previews -->
+  <meta name="description" content="Visor interactivo y mapa geoespacial de la oferta inmobiliaria (casas y departamentos) en la Zona Metropolitana de Guadalajara (AMG). Desarrollado como complemento para Valuametric.">
+  <meta property="og:title" content="Valuametric | Visor de Oferta Inmobiliaria AMG">
+  <meta property="og:description" content="Visor interactivo de inteligencia territorial y oferta inmobiliaria en la Zona Metropolitana de Guadalajara.">
+  <meta property="og:type" content="website">
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,6 +172,37 @@
             <div class="val" id="modal-terr-m2">-</div>
             <div class="lbl">Terreno</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Data Source Info Modal -->
+  <div id="welcome-modal-overlay" class="welcome-modal-overlay">
+    <div class="modal-card welcome-card">
+      <div class="welcome-header">
+        <div class="brand-icon" style="width: 44px; height: 44px; font-size: 1.4rem;">V</div>
+        <div>
+          <h2>Valuametric Visor</h2>
+          <p style="color: var(--accent-blue); font-size: 0.85rem; font-weight: 500;">Inteligencia Territorial & Oferta Inmobiliaria</p>
+        </div>
+      </div>
+
+      <div class="welcome-body">
+        <p>Bienvenido al <strong>Visor de Oferta Inmobiliaria para la Zona Metropolitana de Guadalajara (AMG)</strong>, desarrollado como un módulo complementario de análisis espacial para <strong>Valuametric</strong>.</p>
+        
+        <div class="info-callout">
+          <h4>📌 Metodología y Obtención de Datos</h4>
+          <p>La información geoespacial de las propiedades es extraída mediante procesos automatizados de scraping y normalización de datos a partir de publicaciones públicas en los principales <strong>portales inmobiliarios</strong> de la región.</p>
+          <ul style="margin-top: 8px; margin-left: 18px; color: var(--text-muted); font-size: 0.82rem;">
+            <li>Frecuencia de recopilación continua en más de 5,300 ubicaciones registradas.</li>
+            <li>Procesamiento espacial (desduplicación por coordenadas y teselado Mercator Zoom 14/15).</li>
+            <li>Uso estrictamente analítico, de investigación y demostración técnica.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 14px; text-align: right;">
+          <button id="welcome-btn-continue" class="welcome-btn">Explorar Visor Interactivo</button>
         </div>
       </div>
     </div>

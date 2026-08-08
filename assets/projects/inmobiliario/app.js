@@ -347,6 +347,22 @@ function setupEventListeners() {
     filterData();
   });
 
+  document.getElementById('welcome-btn-continue').addEventListener('click', () => {
+    const welcomeOverlay = document.getElementById('welcome-modal-overlay');
+    if (welcomeOverlay) {
+      welcomeOverlay.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('welcome-modal-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'welcome-modal-overlay') {
+      const welcomeOverlay = document.getElementById('welcome-modal-overlay');
+      if (welcomeOverlay) {
+        welcomeOverlay.classList.add('hidden');
+      }
+    }
+  });
+
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('modal-overlay').addEventListener('click', (e) => {
     if (e.target.id === 'modal-overlay') closeModal();
@@ -371,9 +387,12 @@ function openModal(props) {
   document.getElementById('modal-const-m2').innerText = props.construction_m2 ? `${props.construction_m2} m²` : 'N/D';
   document.getElementById('modal-terr-m2').innerText = props.terrain_m2 ? `${props.terrain_m2} m²` : 'N/D';
 
+  overlay.style.display = 'flex';
   overlay.classList.add('open');
 }
 
 function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
+  const overlay = document.getElementById('modal-overlay');
+  overlay.classList.remove('open');
+  overlay.style.display = 'none';
 }
