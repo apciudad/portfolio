@@ -193,6 +193,10 @@ function renderMapPoints() {
     const props = feature.properties;
     const color = TYPE_COLORS[props.type] || TYPE_COLORS.other;
 
+    const photoUrl = (props.photos && props.photos.length > 0) 
+      ? props.photos[0] 
+      : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=300&q=80';
+
     const marker = L.circleMarker([coords[1], coords[0]], {
       radius: 6,
       fillColor: color,
@@ -202,18 +206,46 @@ function renderMapPoints() {
       fillOpacity: 0.85
     });
 
-    const popupContent = `
-      <div style="font-family: sans-serif; color: #0f172a; padding: 4px;">
-        <div style="font-weight: 700; font-size: 1.05rem; color: #0284c7;">${props.price_formatted}</div>
-        <div style="font-size: 0.8rem; color: #475569; margin: 3px 0;">${props.address}</div>
-        <div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #64748b;">${props.type === 'house' ? 'Casa' : 'Departamento'} • ${props.bedrooms || '-'} rec • ${props.bathrooms || '-'} baños</div>
+    const popupHtml = `
+      <div class="popup-card-gallery">
+        <img src="${photoUrl}" alt="Foto propiedad" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=300&q=80'">
+        <div class="popup-card-tag">${props.type === 'house' ? 'Casa' : 'Depto'}</div>
+      </div>
+      <div class="popup-card-body">
+        <div class="popup-price-row">
+          <div class="popup-price">${props.price_formatted}</div>
+          <div class="popup-price-m2">${props.price_m2 ? '$' + props.price_m2.toLocaleString() + '/m²' : ''}</div>
+        </div>
+        <div class="popup-address" title="${props.address}">${props.address}</div>
+        
+        <div class="popup-specs-grid">
+          <div class="popup-spec-box">
+            <div class="val">${props.bedrooms || '-'}</div>
+            <div class="lbl">Rec</div>
+          </div>
+          <div class="popup-spec-box">
+            <div class="val">${props.bathrooms || '-'}</div>
+            <div class="lbl">Baños</div>
+          </div>
+          <div class="popup-spec-box">
+            <div class="val">${props.construction_m2 ? props.construction_m2 + 'm²' : '-'}</div>
+            <div class="lbl">Const</div>
+          </div>
+          <div class="popup-spec-box">
+            <div class="val">${props.terrain_m2 ? props.terrain_m2 + 'm²' : '-'}</div>
+            <div class="lbl">Terr</div>
+          </div>
+        </div>
       </div>
     `;
 
-    marker.bindPopup(popupContent);
+    marker.bindPopup(popupHtml, { 
+      minWidth: 280,
+      maxWidth: 290,
+      className: 'custom-property-popup'
+    });
 
     marker.on('click', () => {
-      openModal(props);
       highlightCard(props.id);
     });
 
@@ -260,8 +292,17 @@ function renderListings() {
     `;
 
     card.addEventListener('click', () => {
-      map.flyTo([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], 15, { duration: 1.2 });
-      openModal(p);
+      const latLng = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+      map.flyTo(latLng, 15, { duration: 1.2 });
+
+      // Find marker in layer group and open its popup
+      markersLayerGroup.eachLayer(marker => {
+        const mLatLng = marker.getLatLng();
+        if (Math.abs(mLatLng.lat - latLng[0]) < 0.00001 && Math.abs(mLatLng.lng - latLng[1]) < 0.00001) {
+          marker.openPopup();
+        }
+      });
+
       highlightCard(p.id);
     });
 

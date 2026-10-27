@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Pollerías AMG — @urbanistalepe</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #1E293B;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            flex-shrink: 0;
+            height: 52px;
+        }
+
+        header h1 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #F8FAFC;
+            letter-spacing: 0.3px;
+        }
+
+        header .badge {
+            background-color: #E63946;
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        header .author {
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 5px 14px;
+            border-radius: 20px;
+            color: #38BDF8;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        header .author:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: #7DD3FC;
+        }
+
+        .dashboard-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: calc(100vh - 52px);
+            width: 100%;
+            overflow: hidden;
+            background-color: #0F172A;
+        }
+
+        .pane {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #1E293B;
+        }
+
+        .pane-left {
+            border-right: 1px solid #334155;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        @media (max-width: 960px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+            }
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 550px 550px;
+                height: auto;
+            }
+            .pane-left {
+                border-right: none;
+                border-bottom: 1px solid #334155;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <span>🍗 Mapa & Matriz de Pollerías en el AMG</span>
+            <span class="badge">Guadalajara Metropolitana</span>
+        </h1>
+        <a href="https://twitter.com/urbanistalepe" target="_blank" class="author">
+            Analítica Urbana: @urbanistalepe
+        </a>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="pane pane-left" title="Mapa Geográfico Interactivo de Pollerías">
+            <iframe src="mapa_pollerias_amg.html" title="Mapa Interactivo de Pollerías"></iframe>
+        </section>
+        <section class="pane pane-right" title="Matriz de Reputación y Popularidad">
+            <iframe src="matriz_interactiva_pollerias_amg.html" title="Matriz de Reputación de Pollerías"></iframe>
+        </section>
+    </main>
+</body>
+</html>

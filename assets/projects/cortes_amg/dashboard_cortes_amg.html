@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Cortes de Carne & Steakhouses AMG — @urbanistalepe</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        header {
+            background-color: #1E293B;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            height: 52px;
+            flex-shrink: 0;
+        }
+        header h1 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #F8FAFC;
+        }
+        header .badge {
+            background-color: #EF4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        header .author {
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: #94A3B8;
+        }
+        header .author strong { color: #F87171; }
+        .view-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .btn-toggle {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #F8FAFC;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-toggle:hover, .btn-toggle.active {
+            background: #EF4444;
+            border-color: #DC2626;
+            color: white;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .panel {
+            height: 100%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        #panel-map {
+            width: 50%;
+            border-right: 1px solid #334155;
+        }
+        #panel-matrix {
+            width: 50%;
+            background-color: #FFFFFF;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            main { flex-direction: column; }
+            #panel-map, #panel-matrix { width: 100% !important; height: 50% !important; }
+            #panel-map { border-right: none; border-bottom: 1px solid #334155; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <span>🥩</span>
+            <span>Cortes de Carne & Steakhouses AMG</span>
+            <span class="badge">AMG 2026</span>
+        </h1>
+        <div class="view-controls">
+            <button class="btn-toggle active" id="btn-split" onclick="setView('split')">Dividido 50/50</button>
+            <button class="btn-toggle" id="btn-map" onclick="setView('map')">Solo Mapa</button>
+            <button class="btn-toggle" id="btn-matrix" onclick="setView('matrix')">Solo Matriz</button>
+        </div>
+        <div class="author">
+            Análisis Urbano: <strong>@urbanistalepe</strong>
+        </div>
+    </header>
+
+    <main id="main-container">
+        <section id="panel-map" class="panel">
+            <iframe src="mapa_cortes_amg.html" title="Mapa de Cortes AMG"></iframe>
+        </section>
+        <section id="panel-matrix" class="panel">
+            <iframe src="matriz_interactiva_cortes_amg.html" title="Matriz de Reputación"></iframe>
+        </section>
+    </main>
+
+    <script>
+        function setView(mode) {
+            const pMap = document.getElementById('panel-map');
+            const pMatrix = document.getElementById('panel-matrix');
+            const btns = document.querySelectorAll('.btn-toggle');
+            btns.forEach(b => b.classList.remove('active'));
+
+            if (mode === 'split') {
+                pMap.style.width = '50%';
+                pMap.style.display = 'block';
+                pMatrix.style.width = '50%';
+                pMatrix.style.display = 'block';
+                document.getElementById('btn-split').classList.add('active');
+            } else if (mode === 'map') {
+                pMap.style.width = '100%';
+                pMap.style.display = 'block';
+                pMatrix.style.display = 'none';
+                document.getElementById('btn-map').classList.add('active');
+            } else if (mode === 'matrix') {
+                pMap.style.display = 'none';
+                pMatrix.style.width = '100%';
+                pMatrix.style.display = 'block';
+                document.getElementById('btn-matrix').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
