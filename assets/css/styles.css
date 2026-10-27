@@ -17,7 +17,7 @@
 
 body {
     margin: 0;
-    font-family: Roboto, system-ui, -apple-system, sans-serif;
+    font-family: 'Urbanist', system-ui, -apple-system, sans-serif;
     background: radial-gradient(1200px 700px at 20% 0%, #13254a 0%, var(--bg) 55%);
     color: var(--text);
     line-height: 1.5;
@@ -50,7 +50,7 @@ a:hover {
 }
 
 .brand .name {
-    font-family: Raleway, sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 800;
     font-size: 1.2rem;
 }
@@ -341,7 +341,7 @@ a:hover {
 }
 
 .card-title {
-    font-family: Raleway;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 800;
     font-size: 1.1rem;
     margin-top: 5px;
@@ -365,7 +365,7 @@ a:hover {
 
 .cv-column h3 {
     color: var(--accent);
-    font-family: Raleway, sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 13px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -384,7 +384,7 @@ a:hover {
 }
 
 .cv-item h4 {
-    font-family: Raleway;
+    font-family: 'Urbanist', sans-serif;
     font-size: 1rem;
     margin-bottom: 5px;
 }
@@ -453,7 +453,7 @@ a:hover {
 }
 
 .modal-title {
-    font-family: Raleway;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 800;
     font-size: 1.8rem;
     margin-bottom: 10px;
@@ -510,7 +510,7 @@ a:hover {
 }
 
 .section-title {
-    font-family: Raleway;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 800;
     font-size: 1.5rem;
     border-bottom: 4px solid var(--accent);
@@ -581,7 +581,7 @@ a:hover {
 }
 
 .intro-title {
-    font-family: 'Raleway', system-ui, sans-serif;
+    font-family: 'Urbanist', system-ui, sans-serif;
     font-size: 3.4rem;
     font-weight: 800;
     line-height: 1.15;
@@ -877,7 +877,7 @@ a:hover {
 }
 
 .service-content h3 {
-    font-family: 'Raleway', system-ui, sans-serif;
+    font-family: 'Urbanist', system-ui, sans-serif;
     font-weight: 800;
     font-size: 1.25rem;
     color: var(--text);
@@ -985,7 +985,7 @@ a:hover {
 }
 
 .footer-brand .name {
-    font-family: Raleway, sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 800;
     font-size: 1.4rem;
     color: var(--text);
