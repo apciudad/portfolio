@@ -282,6 +282,10 @@ window.addEventListener('DOMContentLoaded', () => {
         if (modal) {
             modal.classList.add("active");
             document.body.style.overflow = "hidden";
+            // Actualizar URL sin recargar para permitir enlaces directos
+            if (p.id && window.location.hash !== `#${p.id}`) {
+                history.replaceState(null, '', `#${p.id}`);
+            }
         }
     };
 
@@ -289,11 +293,26 @@ window.addEventListener('DOMContentLoaded', () => {
         if (modal) {
             modal.classList.remove("active");
             document.body.style.overflow = "auto";
+            // Limpiar hash al cerrar
+            if (window.location.hash.length > 1 && !['#work', '#services', '#cv', '#contact'].includes(window.location.hash)) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
         }
     };
 
+    // --- REVISAR ENLACE DIRECTO (HASH ROUTING) ---
+    function checkDirectLink() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash || ['work', 'services', 'cv', 'contact'].includes(hash)) return;
+        const target = projects.find(item => item.id === hash);
+        if (target) {
+            setTimeout(() => openModal(target), 200);
+        }
+    }
+
     modalClose?.addEventListener("click", closeModal);
     modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener("hashchange", checkDirectLink);
     searchInput?.addEventListener("input", applyFilters);
     pageSizeSelect?.addEventListener("change", (e) => {
         pageSize = parseInt(e.target.value);
@@ -303,7 +322,9 @@ window.addEventListener('DOMContentLoaded', () => {
     prevBtn?.addEventListener("click", () => { if (page > 1) { page--; render(); } });
     nextBtn?.addEventListener("click", () => { if ((page * pageSize) < filtered.length) { page++; render(); } });
 
-    loadData();
+    loadData().then(() => {
+        checkDirectLink();
+    });
 });
 
 const contactForm = document.getElementById('contactForm');
