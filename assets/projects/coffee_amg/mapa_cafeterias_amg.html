@@ -3727,6 +3727,14 @@ if (typeof applyFilters === 'function') { applyFilters(); }
         // Inicializar resaltado de rango al cargar
         document.addEventListener('DOMContentLoaded', function() {
             applyFilters();
+            if (window.innerWidth <= 600) {
+                var content = document.getElementById("panel-content");
+                var btn = document.getElementById("toggle-panel-btn");
+                if (content && btn) {
+                    content.style.display = "none";
+                    btn.innerText = "➕";
+                }
+            }
         });
     </script>
     

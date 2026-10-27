@@ -196,14 +196,10 @@ a:hover {
     transform: translateY(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
 .tile-item:hover .tile-overlay,
 .tile-item.active .tile-overlay {
     opacity: 1;
-<<<<<<< Updated upstream
     transform: translateY(0);
-=======
->>>>>>> Stashed changes
 }
 
 .tile-title {
@@ -764,6 +760,19 @@ a:hover {
 }
 
 @media (max-width: 900px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 5%;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
     .intro {
         flex-direction: column;
         text-align: center;
@@ -779,28 +788,50 @@ a:hover {
     }
 
     .intro-title {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
     }
 
     .intro-media {
         width: 100%;
-        max-width: 360px;
-        height: 420px;
+        max-width: 320px;
+        height: 380px;
     }
 
     .profile-arch-frame {
-        width: 270px;
-        height: 350px;
+        width: 240px;
+        height: 320px;
     }
 
     .badge-left {
-        left: 0px;
-        top: 65%;
+        left: -10px;
+        top: 68%;
     }
 
     .badge-right {
-        right: 0px;
-        top: 15%;
+        right: -10px;
+        top: 10%;
+    }
+
+    .floating-badge {
+        padding: 8px 12px;
+    }
+
+    .floating-badge .badge-text strong {
+        font-size: 0.82rem;
+    }
+
+    .floating-badge .badge-text span {
+        font-size: 0.72rem;
+    }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .modal-img {
@@ -817,6 +848,37 @@ a:hover {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .badge-left {
+        left: 0;
+        top: auto;
+        bottom: 5px;
+    }
+
+    .badge-right {
+        right: 0;
+        top: 5px;
+    }
+
+    .tile-item {
+        width: 260px;
+        height: 380px;
+    }
+
+    .tile-item.active {
+        width: 88vw;
+    }
+
+    .horizontal-tiles-section {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .tiles-viewport {
+        height: 440px;
     }
 }
 

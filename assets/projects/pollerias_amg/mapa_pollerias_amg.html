@@ -2013,6 +2013,14 @@ registerMarkerForFilter(circle_marker_e547c61209dfa860c5758de5617fea83, feature_
 registerMarkerForFilter(circle_marker_899e6c18385bf241cfa95f651b274843, feature_group_465426364b8b40841e76aa68084a80da, 5.0, 1);
 registerMarkerForFilter(circle_marker_e29b8c48a73b9473502f6c2ad5ceaa30, feature_group_465426364b8b40841e76aa68084a80da, null, 0);
 if (typeof applyFilters === 'function') { applyFilters(); }
+    if (window.innerWidth <= 600) {
+        var content = document.getElementById("panel-content");
+        var btn = document.getElementById("toggle-panel-btn");
+        if (content && btn) {
+            content.style.display = "none";
+            btn.innerText = "➕";
+        }
+    }
 });</script>
     
             <div class="folium-map" id="map_d5ef068f2e860f60791409b11e0c91a1" ></div>

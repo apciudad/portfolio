@@ -94,10 +94,37 @@
             border: none;
             display: block;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                flex-direction: column;
+                padding: 10px 14px;
+                gap: 8px;
+                align-items: stretch;
+            }
+            header h1 {
+                font-size: 0.95rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+            .view-controls {
+                width: 100%;
+                display: flex;
+            }
+            .btn-toggle {
+                flex: 1;
+                padding: 8px 4px;
+                font-size: 0.78rem;
+                text-align: center;
+                min-height: 40px;
+            }
+            header .author {
+                display: none;
+            }
             main { flex-direction: column; }
-            #panel-map, #panel-matrix { width: 100% !important; height: 50% !important; }
-            #panel-map { border-right: none; border-bottom: 1px solid #334155; }
+            #panel-map, #panel-matrix { width: 100% !important; height: 100% !important; }
+            #panel-map { border-right: none; }
         }
     </style>
 </head>
@@ -105,13 +132,13 @@
     <header>
         <h1>
             <span>🥩</span>
-            <span>Cortes de Carne & Steakhouses AMG</span>
+            <span>Cortes de Carne AMG</span>
             <span class="badge">AMG 2026</span>
         </h1>
         <div class="view-controls">
-            <button class="btn-toggle active" id="btn-split" onclick="setView('split')">Dividido 50/50</button>
-            <button class="btn-toggle" id="btn-map" onclick="setView('map')">Solo Mapa</button>
-            <button class="btn-toggle" id="btn-matrix" onclick="setView('matrix')">Solo Matriz</button>
+            <button class="btn-toggle active" id="btn-split" onclick="setView('split')">Dividido</button>
+            <button class="btn-toggle" id="btn-map" onclick="setView('map')">🗺️ Mapa</button>
+            <button class="btn-toggle" id="btn-matrix" onclick="setView('matrix')">📊 Matriz</button>
         </div>
         <div class="author">
             Análisis Urbano: <strong>@urbanistalepe</strong>
@@ -133,24 +160,43 @@
             const pMatrix = document.getElementById('panel-matrix');
             const btns = document.querySelectorAll('.btn-toggle');
             btns.forEach(b => b.classList.remove('active'));
+            const isMobile = window.innerWidth <= 768;
 
             if (mode === 'split') {
-                pMap.style.width = '50%';
-                pMap.style.display = 'block';
-                pMatrix.style.width = '50%';
-                pMatrix.style.display = 'block';
+                if (isMobile) {
+                    pMap.style.width = '100%';
+                    pMap.style.height = '50%';
+                    pMap.style.display = 'block';
+                    pMatrix.style.width = '100%';
+                    pMatrix.style.height = '50%';
+                    pMatrix.style.display = 'block';
+                } else {
+                    pMap.style.width = '50%';
+                    pMap.style.height = '100%';
+                    pMap.style.display = 'block';
+                    pMatrix.style.width = '50%';
+                    pMatrix.style.height = '100%';
+                    pMatrix.style.display = 'block';
+                }
                 document.getElementById('btn-split').classList.add('active');
             } else if (mode === 'map') {
                 pMap.style.width = '100%';
+                pMap.style.height = '100%';
                 pMap.style.display = 'block';
                 pMatrix.style.display = 'none';
                 document.getElementById('btn-map').classList.add('active');
             } else if (mode === 'matrix') {
                 pMap.style.display = 'none';
                 pMatrix.style.width = '100%';
+                pMatrix.style.height = '100%';
                 pMatrix.style.display = 'block';
                 document.getElementById('btn-matrix').classList.add('active');
             }
+        }
+
+        // On mobile, default to Solo Mapa for optimal usability
+        if (window.innerWidth <= 768) {
+            setView('map');
         }
     </script>
 </body>
